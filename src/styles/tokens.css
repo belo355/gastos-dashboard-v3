@@ -1,0 +1,76 @@
+/*
+ * Tokens de design. Tema claro por padrão; o escuro segue a preferência do sistema.
+ * As cores de categoria têm duas variantes:
+ *   --cat-<id>      preenchimento (gráficos, ícones)
+ *   --cat-<id>-ink  texto sobre o preenchimento (contraste >= 4,5:1)
+ * O contraste é verificado em src/styles/contrast.test.ts.
+ */
+:root {
+  color-scheme: light dark;
+
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #eef0f7;
+  --border: #d4d8e4;
+  --text: #121826;
+  --text-muted: #4a5468;
+  --primary: #4338ca;
+  --primary-ink: #ffffff;
+  --focus: #1d4ed8;
+
+  --ok: #15803d;
+  --warning: #854d0e;
+  --danger: #b91c1c;
+  --ok-bg: #dcfce7;
+  --warning-bg: #fef3c7;
+  --danger-bg: #fee2e2;
+
+  --cat-alimentacao: #c2410c;
+  --cat-mercado: #15803d;
+  --cat-moradia: #1d4ed8;
+  --cat-transporte: #7e22ce;
+  --cat-carro: #b91c1c;
+  --cat-saude: #be185d;
+  --cat-educacao: #0e7490;
+  --cat-lazer: #a16207;
+  --cat-jogos: #4338ca;
+  --cat-vestuario: #a21caf;
+  --cat-familia: #0f766e;
+  --cat-outros: #475569;
+  --cat-ink: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1020;
+    --surface: #141a2e;
+    --surface-2: #1d2540;
+    --border: #2f3a5c;
+    --text: #eef1f8;
+    --text-muted: #b4bccf;
+    --primary: #a5b4fc;
+    --primary-ink: #0b1020;
+    --focus: #93c5fd;
+
+    --ok: #4ade80;
+    --warning: #facc15;
+    --danger: #f87171;
+    --ok-bg: #12301f;
+    --warning-bg: #3a2f0b;
+    --danger-bg: #3d1515;
+
+    --cat-alimentacao: #fb923c;
+    --cat-mercado: #4ade80;
+    --cat-moradia: #60a5fa;
+    --cat-transporte: #c084fc;
+    --cat-carro: #f87171;
+    --cat-saude: #f472b6;
+    --cat-educacao: #22d3ee;
+    --cat-lazer: #facc15;
+    --cat-jogos: #818cf8;
+    --cat-vestuario: #e879f9;
+    --cat-familia: #2dd4bf;
+    --cat-outros: #94a3b8;
+    --cat-ink: #0b1020;
+  }
+}
