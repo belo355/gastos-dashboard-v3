@@ -37,42 +37,47 @@ export function SummaryPage() {
       {!data ? (
         <p className="text-muted">Carregando…</p>
       ) : (
-        <>
-          <Panel
-            labelledBy={data.summary.categories.length > 0 ? 'dist-title' : undefined}
-            className="flex flex-col gap-4"
-          >
-            <MonthTotalCard
-              month={month}
-              totalCents={data.summary.totalCents}
-              count={data.summary.count}
-              comparison={data.comparison}
-            />
-            {data.summary.categories.length > 0 && (
-              <div className="flex flex-col gap-2 border-t border-separator pt-4">
-                <h2 id="dist-title" className="text-headline font-semibold">
-                  Para onde foi o dinheiro
-                </h2>
-                <CategoryBubbles categories={data.summary.categories} />
-              </div>
-            )}
-          </Panel>
-          {data.summary.categories.length === 0 ? (
-            <EmptyState
-              icon={<ChartPie size={56} strokeWidth={1.5} aria-hidden />}
-              title={`Nenhum gasto em ${formatMonthName(month)} ainda.`}
-              action={<Button onClick={form.openNew}>Lançar</Button>}
+        <div className="flex flex-col gap-3 lg:grid lg:grid-cols-2 lg:items-start lg:gap-6">
+          <div className="flex flex-col gap-3 lg:sticky lg:top-16">
+            <Panel
+              labelledBy={data.summary.categories.length > 0 ? 'dist-title' : undefined}
+              className="flex flex-col gap-4"
             >
-              Toque em Lançar para começar.
-            </EmptyState>
-          ) : (
-            <section aria-labelledby="rank-title" className="flex flex-col gap-2">
-              <SectionHeader id="rank-title" title="Ranking das categorias" />
-              <CategoryRanking categories={data.summary.categories} />
-            </section>
-          )}
-          {budgets && <SummaryBudgets data={budgets} />}
-        </>
+              <MonthTotalCard
+                month={month}
+                totalCents={data.summary.totalCents}
+                count={data.summary.count}
+                comparison={data.comparison}
+              />
+              {data.summary.categories.length > 0 && (
+                <div className="flex flex-col gap-2 border-t border-separator pt-4">
+                  <h2 id="dist-title" className="text-headline font-semibold">
+                    Para onde foi o dinheiro
+                  </h2>
+                  <CategoryBubbles categories={data.summary.categories} />
+                </div>
+              )}
+            </Panel>
+            {data.summary.categories.length === 0 && (
+              <EmptyState
+                icon={<ChartPie size={56} strokeWidth={1.5} aria-hidden />}
+                title={`Nenhum gasto em ${formatMonthName(month)} ainda.`}
+                action={<Button onClick={form.openNew}>Lançar</Button>}
+              >
+                Toque em Lançar para começar.
+              </EmptyState>
+            )}
+          </div>
+          <div className="flex flex-col gap-3 lg:-mt-3">
+            {data.summary.categories.length > 0 && (
+              <section aria-labelledby="rank-title" className="flex flex-col gap-2">
+                <SectionHeader id="rank-title" title="Ranking das categorias" />
+                <CategoryRanking categories={data.summary.categories} />
+              </section>
+            )}
+            {budgets && <SummaryBudgets data={budgets} />}
+          </div>
+        </div>
       )}
     </section>
   );

@@ -222,6 +222,123 @@ input[type='date'] {
   animation: toast-in 520ms var(--ease-out-expo);
 }
 
+/*
+ * Celebração ao lançar um gasto (1,5 s): o cartão surge com mola, o ícone salta, uma onda e
+ * os pontos se espalham, o check se desenha e tudo sai encolhendo. Some com "reduzir movimento".
+ */
+@keyframes celebrate-card {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  28%,
+  78% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.88) translateY(-8px);
+  }
+}
+.celebrate-card {
+  animation: celebrate-card 1500ms var(--ease-out-expo) both;
+}
+
+@keyframes celebrate-badge {
+  0% {
+    transform: scale(0.3) rotate(-14deg);
+  }
+  45% {
+    transform: scale(1.12) rotate(4deg);
+  }
+  70% {
+    transform: scale(0.97) rotate(0);
+  }
+  100% {
+    transform: none;
+  }
+}
+.celebrate-badge {
+  animation: celebrate-badge 620ms 80ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+@keyframes celebrate-ripple {
+  from {
+    opacity: 0.9;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+.celebrate-ripple {
+  animation: celebrate-ripple 700ms 220ms ease-out both;
+}
+
+/* A curva fica nos quadros: os pontos voam rápido, ficam visíveis e só então se apagam. */
+@keyframes celebrate-spark {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+  }
+  12% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+    transform: translate(calc(var(--dx) * 0.85), calc(var(--dy) * 0.85)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0.5);
+  }
+}
+.celebrate-spark {
+  animation: celebrate-spark 900ms 200ms ease-out both;
+}
+
+@keyframes celebrate-check {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: none;
+  }
+}
+.celebrate-check {
+  animation: celebrate-check 380ms 360ms cubic-bezier(0.2, 0.9, 0.3, 1.4) both;
+}
+.celebrate-check-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: celebrate-draw 340ms 520ms ease-out forwards;
+}
+@keyframes celebrate-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes celebrate-text {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.celebrate-text {
+  animation: celebrate-text 420ms 300ms var(--ease-out-expo) both;
+}
+
 /* O título compacto da barra aparece quando o título grande sai da tela. */
 .compact-title {
   transition:
@@ -236,6 +353,9 @@ input[type='date'] {
 .ring-fill {
   transition: stroke-dashoffset 900ms var(--ease-out-expo);
 }
+.ring-cap {
+  transition: transform 900ms var(--ease-out-expo);
+}
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -246,4 +366,36 @@ input[type='date'] {
     transition: none !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Troca de abas: o conteúdo esmaece e assenta (View Transitions); a barra de abas fica parada. */
+nav[aria-label='Navegação principal'] {
+  view-transition-name: tab-bar;
+}
+::view-transition-old(root) {
+  animation: 180ms ease-out both vt-out;
+}
+::view-transition-new(root) {
+  animation: 320ms var(--ease-out-expo) both vt-in;
+}
+@keyframes vt-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+[data-testid='launch-button'] {
+  view-transition-name: launch-button;
 }

@@ -34,6 +34,25 @@ export function PageHeader({
     return () => io.disconnect();
   }, []);
 
+  // Ao puxar além do topo (elástico do iOS), o título grande cresce um pouco, como nos apps da Apple.
+  useEffect(() => {
+    const el = sentinel.current;
+    if (!el || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    let frame = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const pull = Math.min(Math.max(-window.scrollY, 0), 120);
+        el.style.transform = pull > 0 ? `scale(${1 + pull / 800})` : '';
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
     <>
       <div
@@ -52,7 +71,7 @@ export function PageHeader({
       </div>
       {leading}
       <div className="flex items-end justify-between gap-3 pt-2">
-        <h1 id={id} ref={sentinel} className="text-large-title font-bold">
+        <h1 id={id} ref={sentinel} className="origin-left text-large-title font-bold">
           {title}
           {srSuffix && <span className="sr-only"> {srSuffix}</span>}
         </h1>

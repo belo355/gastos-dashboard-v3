@@ -65,13 +65,22 @@ function BudgetRing({
       />
       {lap === 0 && first > 0.9 && (
         // Perto de fechar a volta, a ponta passa por cima do início com uma sombra, como no Atividade.
-        <circle
-          cx={size / 2 + r * Math.cos(2 * Math.PI * first)}
-          cy={size / 2 + r * Math.sin(2 * Math.PI * first)}
-          r={stroke / 2}
-          fill={RING_COLOR[state]}
-          className="[filter:drop-shadow(1px_0_2px_rgb(0_0_0/0.35))]"
-        />
+        // A ponta gira junto com o arco (mesma duração e curva), em vez de saltar para o fim.
+        <g
+          className="ring-cap"
+          style={{
+            transform: `rotate(${first * 360}deg)`,
+            transformOrigin: `${size / 2}px ${size / 2}px`,
+          }}
+        >
+          <circle
+            cx={size / 2 + r}
+            cy={size / 2}
+            r={stroke / 2}
+            fill={RING_COLOR[state]}
+            className="[filter:drop-shadow(0_1px_1.5px_rgb(0_0_0/0.35))]"
+          />
+        </g>
       )}
       {lap > 0 && (
         <circle

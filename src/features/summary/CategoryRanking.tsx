@@ -23,11 +23,11 @@ export function CategoryRanking({ categories }: { categories: CategoryTotal[] })
               to={`/lancamentos?categoria=${c.categoryId}`}
               data-testid="ranking-row"
               data-category={c.categoryId}
-              className="flex min-h-16 items-center gap-3 pl-4 hover:bg-surface-2/60 active:bg-surface-2"
+              className="flex min-h-14 items-center gap-3 pl-4 hover:bg-surface-2/60 active:bg-surface-2"
             >
               <CategoryBadge id={c.categoryId} size={34} />
               <span className="row-body flex min-w-0 flex-1 items-center gap-2 self-stretch py-2.5 pr-3">
-                <span className="flex min-w-0 flex-1 flex-col gap-1">
+                <span className="flex min-w-0 flex-1 flex-col gap-1.5">
                   <span className="flex items-baseline justify-between gap-2">
                     <span className="truncate font-semibold">{cat.name}</span>
                     <span className="figure shrink-0 font-semibold" data-testid="ranking-value">
@@ -47,15 +47,12 @@ export function CategoryRanking({ categories }: { categories: CategoryTotal[] })
                         }}
                       />
                     </span>
-                    <span
-                      className="figure w-14 text-right text-footnote font-semibold text-muted"
-                      data-testid="ranking-percent"
-                    >
-                      {formatPercent(c.percent)}
+                    <span className="w-[9.75rem] shrink-0 whitespace-nowrap text-right text-footnote text-muted">
+                      <span className="figure font-semibold" data-testid="ranking-percent">
+                        {formatPercent(c.percent)}
+                      </span>{' '}
+                      · {plural(c.count, 'lançamento', 'lançamentos')}
                     </span>
-                  </span>
-                  <span className="text-footnote text-muted">
-                    {c.rank}º · {plural(c.count, 'lançamento', 'lançamentos')}
                   </span>
                 </span>
                 <ChevronRight

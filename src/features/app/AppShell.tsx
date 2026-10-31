@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { NavLink, Outlet } from 'react-router';
+import { NavLink, Outlet, useLocation } from 'react-router';
 import { ChartPie, Check, Ellipsis, List, Plus, Target } from 'lucide-react';
 import { SAVED_EVENT } from '../../hooks/useSaveExpense';
 import { useExpenseForm } from '../expenses/ExpenseFormContext';
+import { SaveCelebration } from './SaveCelebration';
 
 const NAV = [
   { to: '/', label: 'Resumo', icon: ChartPie, end: true },
@@ -30,11 +31,27 @@ function useSavedPulse(ms = 900) {
   return pulse;
 }
 
+/** true depois que a página rolou um pouco: o botão Lançar recolhe para não cobrir o conteúdo. */
+function useScrolled(threshold = 48) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > threshold);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [threshold]);
+  return scrolled;
+}
+
 export function AppShell() {
   const form = useExpenseForm();
   const pulse = useSavedPulse();
+  const scrolled = useScrolled();
+  const compact = scrolled && !pulse;
+  // O Resumo usa duas colunas em telas largas; as demais telas mantêm a coluna de leitura.
+  const wide = useLocation().pathname === '/';
   return (
-    <div className="mx-auto flex min-h-dvh max-w-2xl flex-col">
+    <div className={`mx-auto flex min-h-dvh max-w-2xl flex-col ${wide ? 'lg:max-w-5xl' : ''}`}>
       <a
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded-lg focus:bg-surface focus:p-3"
@@ -50,7 +67,7 @@ export function AppShell() {
         data-testid="launch-button"
         aria-label="Lançar"
         onClick={form.openNew}
-        className={`press fixed bottom-[calc(5rem+env(safe-area-inset-bottom))] right-[max(1rem,calc(50%-21rem))] z-40 inline-flex min-h-14 items-center gap-2 rounded-full pl-5 pr-6 text-headline font-semibold shadow-[0_10px_28px_-8px_rgb(0_0_0/0.45)] hover:brightness-110 ${
+        className={`press fixed bottom-[calc(5rem+env(safe-area-inset-bottom))] right-[max(1rem,calc(50%-21rem))] z-40 inline-flex min-h-14 min-w-14 items-center justify-center rounded-full ${wide ? 'lg:right-[max(1rem,calc(50%-31rem))]' : ''} ${compact ? 'px-4' : 'gap-2 pl-5 pr-6'} text-headline font-semibold shadow-[0_10px_28px_-8px_rgb(0_0_0/0.45)] hover:brightness-110 ${
           pulse ? 'launch-pop bg-ok text-surface' : 'bg-primary text-primary-ink'
         }`}
       >
@@ -59,8 +76,12 @@ export function AppShell() {
         ) : (
           <Plus aria-hidden size={22} strokeWidth={3} />
         )}
-        <span aria-hidden>{pulse ? 'Salvo!' : 'Lançar'}</span>
+        <span aria-hidden className={compact ? 'sr-only' : ''}>
+          {pulse ? 'Salvo!' : 'Lançar'}
+        </span>
       </button>
+
+      <SaveCelebration />
 
       <nav
         aria-label="Navegação principal"
@@ -72,6 +93,7 @@ export function AppShell() {
               <NavLink
                 to={to}
                 end={end}
+                viewTransition
                 className={({ isActive }) =>
                   `flex min-h-[3.5rem] flex-col items-center justify-center gap-0.5 pt-1.5 text-caption2 font-medium ${isActive ? 'text-tint' : 'text-muted'}`
                 }

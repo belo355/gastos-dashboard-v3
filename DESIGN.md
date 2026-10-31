@@ -315,13 +315,13 @@ Paleta de sistema do iOS: neutros agrupados, um azul de sistema em dois tons e d
 
 **The Dynamic Type Rule.** Tamanhos só da escala `--text-*` em rem (os dois números-herói são as únicas exceções); nada em px, para acompanhar o zoom até 200%.
 
-### Decisão em aberto
+### Fonte fora dos aparelhos Apple
 
-Fora de aparelhos Apple, a pilha cai para a sans da plataforma (Segoe UI no Windows, Roboto no Android), porque SF não pode ser auto-hospedada. Manter assim ou adotar uma face licenciável está **pendente de decisão do usuário**; não é regra do sistema.
+Fora de aparelhos Apple, a pilha cai para a sans da plataforma (Segoe UI no Windows, Roboto no Android), porque a SF não pode ser auto-hospedada. **Decidido: manter a fonte do sistema.** Uma webfont parecida com a SF pesaria no primeiro carregamento do PWA e não seria a SF de qualquer forma; nos aparelhos Apple, público principal do visual, a SF e a SF Rounded já aparecem.
 
 ## Layout
 
-Coluna única centrada com no máximo 672 px (`max-w-2xl`), margem lateral de 16 px e pilha vertical com 12 px entre blocos. Seções seguem o padrão do iOS: cabeçalho de seção em Title 3 com ação opcional à direita, grupo branco embaixo, rodapé em Footnote fora do grupo. No computador o mesmo layout fica centrado; sheets viram painéis centralizados a partir de 640 px. A barra de abas fica fixa na base com respeito à área segura; a cápsula "Lançar" flutua acima dela, à direita, alinhada à borda da coluna. O conteúdo reserva espaço inferior (`pb-44`) para não ficar sob os dois.
+Coluna única centrada com no máximo 672 px (`max-w-2xl`); só o Resumo se abre em duas colunas a partir de `lg` (até 1024 px, `lg:max-w-5xl`: cartão do mês com as bolhas à esquerda, fixo ao rolar; ranking e orçamento à direita), margem lateral de 16 px e pilha vertical com 12 px entre blocos. Seções seguem o padrão do iOS: cabeçalho de seção em Title 3 com ação opcional à direita, grupo branco embaixo, rodapé em Footnote fora do grupo. No computador o mesmo layout fica centrado; sheets viram painéis centralizados a partir de 640 px. A barra de abas fica fixa na base com respeito à área segura; a cápsula "Lançar" flutua acima dela, à direita, alinhada à borda da coluna. O conteúdo reserva espaço inferior (`pb-44`) para não ficar sob os dois.
 
 Alvos de toque têm no mínimo 44 × 44 px; linhas de lista de navegação têm 64 px; botões de texto, 48 px.
 

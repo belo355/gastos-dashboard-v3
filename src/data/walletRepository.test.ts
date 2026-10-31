@@ -37,7 +37,8 @@ describe('TI-03 — walletRepository garante nome único e exclui em cascata', (
     });
     await repo.rename(casa.id, 'CASA');
     await repo.rename(casa.id, 'Lar');
-    expect((await repo.list()).map((w) => w.name)).toEqual(['Lar', 'Viagem']);
+    // Ordena aqui: criadas no mesmo milissegundo, a ordem de list() empata e varia.
+    expect((await repo.list()).map((w) => w.name).sort()).toEqual(['Lar', 'Viagem']);
     await expect(repo.rename('nao-existe', 'X')).rejects.toMatchObject({ code: 'not_found' });
   });
 

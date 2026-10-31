@@ -10,7 +10,7 @@ const page = await browser.newPage();
 async function render(file, size, { maskable = false } = {}) {
   // Ícone "maskable": fundo cheio e o desenho dentro da zona segura (80%).
   const inner = maskable ? Math.round(size * 0.8) : size;
-  const bg = maskable ? '#4338ca' : 'transparent';
+  const bg = maskable ? '#000000' : 'transparent';
   await page.setViewportSize({ width: size, height: size });
   await page.setContent(
     `<html><body style="margin:0;background:${bg};display:flex;align-items:center;justify-content:center;width:${size}px;height:${size}px">
