@@ -14,7 +14,7 @@ import { useSaveExpense } from '../../hooks/useSaveExpense';
 import { errorMessage } from '../../lib/errors';
 import { Button } from '../../ui/Button';
 import { ConfirmDialog } from '../../ui/ConfirmDialog';
-import { FieldError, inputClass } from '../../ui/Field';
+import { FieldError, inputClass, labelClass } from '../../ui/Field';
 import { MoneyInput } from '../../ui/MoneyInput';
 import { Modal } from '../../ui/Sheet';
 import { useAppState } from '../app/AppState';
@@ -124,12 +124,13 @@ function ExpenseForm({ expense, onClose, onSaved }: Omit<Props, 'open'>) {
 
   return (
     <form noValidate onSubmit={onSubmit} className="flex flex-col gap-5">
-      <div>
-        <label htmlFor={ids.amount} className="mb-1 block font-semibold">
+      <div className="text-center">
+        <label htmlFor={ids.amount} className="sr-only">
           Valor
         </label>
         <MoneyInput
           id={ids.amount}
+          size="hero"
           ref={amountRef}
           data-autofocus
           value={amountText}
@@ -141,7 +142,7 @@ function ExpenseForm({ expense, onClose, onSaved }: Omit<Props, 'open'>) {
       </div>
 
       <div>
-        <p id={ids.cat} className="mb-2 font-semibold">
+        <p id={ids.cat} className={labelClass}>
           Categoria
         </p>
         <CategoryPicker
@@ -159,7 +160,7 @@ function ExpenseForm({ expense, onClose, onSaved }: Omit<Props, 'open'>) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor={ids.date} className="mb-1 block font-semibold">
+          <label htmlFor={ids.date} className={labelClass}>
             Data
           </label>
           <input
@@ -175,8 +176,8 @@ function ExpenseForm({ expense, onClose, onSaved }: Omit<Props, 'open'>) {
           <FieldError id={ids.dateErr}>{errors.date}</FieldError>
         </div>
         <div>
-          <label htmlFor={ids.desc} className="mb-1 block font-semibold">
-            Descrição <span className="font-normal text-muted">(opcional)</span>
+          <label htmlFor={ids.desc} className={labelClass}>
+            Descrição <span className="font-normal">(opcional)</span>
           </label>
           <input
             id={ids.desc}
@@ -195,16 +196,13 @@ function ExpenseForm({ expense, onClose, onSaved }: Omit<Props, 'open'>) {
       </div>
 
       {formError && (
-        <p
-          role="alert"
-          className="rounded-xl border-2 border-danger bg-danger-bg px-3 py-2 font-semibold text-text"
-        >
+        <p role="alert" className="rounded-xl bg-danger-bg px-4 py-3 font-semibold text-text">
           {formError}
         </p>
       )}
 
       <div className="flex flex-col gap-2 sm:flex-row-reverse">
-        <Button type="submit" block disabled={saving} className="text-lg">
+        <Button type="submit" block disabled={saving}>
           {saving ? 'Salvando…' : 'Salvar'}
         </Button>
         {expense && (
@@ -212,7 +210,7 @@ function ExpenseForm({ expense, onClose, onSaved }: Omit<Props, 'open'>) {
             variant="ghost"
             block
             icon={<Trash2 aria-hidden size={18} />}
-            className="text-danger"
+            className="!text-danger"
             onClick={() => setConfirmDelete(true)}
           >
             Excluir

@@ -17,6 +17,14 @@ export type SaveResult = { ok: true; expense?: Expense } | { ok: false; message:
 /** Disparado após cada gravação bem-sucedida (para a microanimação de confirmação). */
 export const SAVED_EVENT = 'gastos:expense-saved';
 
+/** Dados do evento: só o necessário para a animação (nada é registrado em log). */
+export interface SavedDetail {
+  categoryId: ExpenseInput['categoryId'];
+  amountCents: number;
+  /** true para um lançamento novo; false para uma edição. */
+  created: boolean;
+}
+
 let persistenceAsked = false;
 
 /**
@@ -57,7 +65,15 @@ export function useSaveExpense() {
         else expense = await expenseRepository.create(input);
 
         if (!editingId) void askPersistenceOnce();
-        window.dispatchEvent(new CustomEvent(SAVED_EVENT));
+        window.dispatchEvent(
+          new CustomEvent<SavedDetail>(SAVED_EVENT, {
+            detail: {
+              categoryId: input.categoryId,
+              amountCents: input.amountCents,
+              created: !editingId,
+            },
+          }),
+        );
         const what = `${formatMoney(input.amountCents)} em ${name}`;
         toast.show(editingId ? `Gasto atualizado: ${what}` : `Gasto salvo: ${what}`);
 

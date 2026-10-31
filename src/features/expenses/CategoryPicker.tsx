@@ -38,7 +38,7 @@ export function CategoryPicker({ value, onChange, labelledBy, describedBy, inval
       aria-labelledby={labelledBy}
       aria-describedby={describedBy}
       aria-invalid={invalid || undefined}
-      className={`grid grid-cols-4 gap-2 rounded-2xl ${invalid ? 'outline-2 outline-offset-4 outline-danger' : ''}`}
+      className={`grid grid-cols-4 gap-1.5 rounded-2xl ${invalid ? 'outline-2 outline-offset-4 outline-danger' : ''}`}
     >
       {CATEGORIES.map((c, i) => {
         const selected = c.id === value;
@@ -54,13 +54,13 @@ export function CategoryPicker({ value, onChange, labelledBy, describedBy, inval
             tabIndex={i === tabStop ? 0 : -1}
             onClick={() => onChange(c.id)}
             onKeyDown={(e) => onKeyDown(e, i)}
-            className={`flex min-h-[4.75rem] flex-col items-center justify-center gap-1 rounded-2xl border-2 px-1 py-2 text-xs font-semibold leading-tight transition ${
+            className={`press flex min-h-[4.75rem] flex-col items-center justify-center gap-1.5 rounded-2xl px-1 py-2 text-caption leading-tight ${
               selected
-                ? 'border-primary bg-surface-2 ring-2 ring-primary'
-                : 'border-transparent bg-surface-2/60 hover:border-border'
+                ? 'bg-tint-fill font-semibold text-tint ring-2 ring-tint'
+                : 'font-medium text-text hover:bg-surface-2'
             }`}
           >
-            <CategoryBadge id={c.id} size={34} />
+            <CategoryBadge id={c.id} size={40} />
             <span>{c.name}</span>
           </button>
         );

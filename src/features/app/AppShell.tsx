@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { NavLink, Outlet } from 'react-router';
+import { NavLink, Outlet, useLocation } from 'react-router';
 import { ChartPie, Check, Ellipsis, List, Plus, Target } from 'lucide-react';
 import { SAVED_EVENT } from '../../hooks/useSaveExpense';
 import { useExpenseForm } from '../expenses/ExpenseFormContext';
+import { SaveCelebration } from './SaveCelebration';
 
 const NAV = [
   { to: '/', label: 'Resumo', icon: ChartPie, end: true },
@@ -30,18 +31,34 @@ function useSavedPulse(ms = 900) {
   return pulse;
 }
 
+/** true depois que a página rolou um pouco: o botão Lançar recolhe para não cobrir o conteúdo. */
+function useScrolled(threshold = 48) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > threshold);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [threshold]);
+  return scrolled;
+}
+
 export function AppShell() {
   const form = useExpenseForm();
   const pulse = useSavedPulse();
+  const scrolled = useScrolled();
+  const compact = scrolled && !pulse;
+  // O Resumo usa duas colunas em telas largas; as demais telas mantêm a coluna de leitura.
+  const wide = useLocation().pathname === '/';
   return (
-    <div className="mx-auto flex min-h-dvh max-w-2xl flex-col">
+    <div className={`mx-auto flex min-h-dvh max-w-2xl flex-col ${wide ? 'lg:max-w-5xl' : ''}`}>
       <a
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded-lg focus:bg-surface focus:p-3"
       >
         Pular para o conteúdo
       </a>
-      <main id="conteudo" className="flex-1 px-4 pb-44 pt-[max(1rem,env(safe-area-inset-top))]">
+      <main id="conteudo" className="flex-1 px-4 pb-44 pt-[max(0.75rem,env(safe-area-inset-top))]">
         <Outlet />
       </main>
 
@@ -50,21 +67,25 @@ export function AppShell() {
         data-testid="launch-button"
         aria-label="Lançar"
         onClick={form.openNew}
-        className={`fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom))] right-[max(1rem,calc(50%-21rem))] z-40 inline-flex min-h-14 items-center gap-2 rounded-full px-6 text-lg font-bold text-primary-ink shadow-xl hover:opacity-95 ${
-          pulse ? 'launch-pop bg-ok' : 'bg-primary'
+        className={`press fixed bottom-[calc(5rem+env(safe-area-inset-bottom))] right-[max(1rem,calc(50%-21rem))] z-40 inline-flex min-h-14 min-w-14 items-center justify-center rounded-full ${wide ? 'lg:right-[max(1rem,calc(50%-31rem))]' : ''} ${compact ? 'px-4' : 'gap-2 pl-5 pr-6'} text-headline font-semibold shadow-[0_10px_28px_-8px_rgb(0_0_0/0.45)] hover:brightness-110 ${
+          pulse ? 'launch-pop bg-ok text-surface' : 'bg-primary text-primary-ink'
         }`}
       >
         {pulse ? (
-          <Check aria-hidden size={24} strokeWidth={3} />
+          <Check aria-hidden size={22} strokeWidth={3} />
         ) : (
-          <Plus aria-hidden size={24} strokeWidth={3} />
+          <Plus aria-hidden size={22} strokeWidth={3} />
         )}
-        <span aria-hidden>{pulse ? 'Salvo!' : 'Lançar'}</span>
+        <span aria-hidden className={compact ? 'sr-only' : ''}>
+          {pulse ? 'Salvo!' : 'Lançar'}
+        </span>
       </button>
+
+      <SaveCelebration />
 
       <nav
         aria-label="Navegação principal"
-        className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur"
+        className="material fixed inset-x-0 bottom-0 z-30 border-t border-separator pb-[env(safe-area-inset-bottom)]"
       >
         <ul className="mx-auto grid max-w-2xl grid-cols-4">
           {NAV.map(({ to, label, icon: Icon, end }) => (
@@ -72,13 +93,14 @@ export function AppShell() {
               <NavLink
                 to={to}
                 end={end}
+                viewTransition
                 className={({ isActive }) =>
-                  `flex min-h-16 flex-col items-center justify-center gap-1 text-xs font-semibold ${isActive ? 'text-primary' : 'text-muted'}`
+                  `flex min-h-[3.5rem] flex-col items-center justify-center gap-0.5 pt-1.5 text-caption2 font-medium ${isActive ? 'text-tint' : 'text-muted'}`
                 }
               >
                 {({ isActive }) => (
                   <>
-                    <Icon aria-hidden size={24} strokeWidth={isActive ? 2.75 : 2} />
+                    <Icon aria-hidden size={25} strokeWidth={isActive ? 2.5 : 1.9} />
                     {label}
                   </>
                 )}

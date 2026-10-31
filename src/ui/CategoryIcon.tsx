@@ -14,7 +14,7 @@ import {
   type LucideIcon,
   type LucideProps,
 } from 'lucide-react';
-import { createElement } from 'react';
+import { createElement, type ReactNode } from 'react';
 import { getCategory, type CategoryId } from '../domain/categories';
 
 const ICONS: Record<CategoryId, LucideIcon> = {
@@ -45,15 +45,41 @@ export function categoryColor(id: CategoryId): string {
   return `var(${getCategory(id).colorVar})`;
 }
 
-/** Ícone da categoria num círculo com a cor dela (decorativo: o nome sempre acompanha). */
+/**
+ * Ícone da categoria num quadrado arredondado com a cor dela, como os ícones dos Ajustes do iOS
+ * (decorativo: o nome sempre acompanha).
+ */
 export function CategoryBadge({ id, size = 40 }: { id: CategoryId; size?: number }) {
+  return (
+    <TileIcon size={size} color={categoryColor(id)}>
+      <CategoryGlyph id={id} size={Math.round(size * 0.58)} strokeWidth={2.25} />
+    </TileIcon>
+  );
+}
+
+/** Quadrado arredondado colorido com um ícone branco/preto (cor do texto das categorias). */
+export function TileIcon({
+  size = 30,
+  color,
+  children,
+}: {
+  size?: number;
+  color: string;
+  children: ReactNode;
+}) {
   return (
     <span
       aria-hidden
-      className="inline-flex shrink-0 items-center justify-center rounded-full"
-      style={{ width: size, height: size, background: categoryColor(id), color: 'var(--cat-ink)' }}
+      className="inline-flex shrink-0 items-center justify-center"
+      style={{
+        width: size,
+        height: size,
+        borderRadius: Math.round(size * 0.24),
+        background: color,
+        color: 'var(--cat-ink)',
+      }}
     >
-      <CategoryGlyph id={id} size={Math.round(size * 0.5)} strokeWidth={2.25} />
+      {children}
     </span>
   );
 }

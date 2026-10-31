@@ -78,7 +78,7 @@ export function ExportPanel() {
 
   return (
     <section aria-labelledby="exp-title" className="flex flex-col gap-4">
-      <h1 id="exp-title" className="text-2xl font-bold">
+      <h1 id="exp-title" className="text-large-title font-bold">
         Exportar planilha
       </h1>
       <p className="text-muted">
@@ -100,7 +100,7 @@ export function ExportPanel() {
           {months.map(([m, info]) => (
             <label
               key={m}
-              className="flex min-h-14 cursor-pointer items-center gap-3 rounded-2xl bg-surface px-4 py-2 shadow-sm"
+              className="flex min-h-14 cursor-pointer items-center gap-3 rounded-2xl bg-surface px-4 py-2"
             >
               <input
                 type="checkbox"
@@ -120,10 +120,7 @@ export function ExportPanel() {
       )}
 
       {error && (
-        <p
-          role="alert"
-          className="rounded-xl border-2 border-danger bg-danger-bg px-3 py-2 font-semibold"
-        >
+        <p role="alert" className="rounded-xl bg-danger-bg px-4 py-3 font-semibold">
           {error}
         </p>
       )}

@@ -31,7 +31,7 @@ export function ExportReminder() {
   return (
     <div
       role="note"
-      className="flex gap-3 rounded-2xl border-2 border-warning bg-warning-bg p-3"
+      className="flex gap-3 rounded-2xl bg-warning-bg p-3"
       data-testid="export-reminder"
     >
       <TriangleAlert aria-hidden className="shrink-0 text-warning" />
@@ -40,7 +40,7 @@ export function ExportReminder() {
           ? 'Faz mais de 30 dias desde a última exportação.'
           : 'Você ainda não exportou seus dados.'}{' '}
         Como eles ficam só neste aparelho,{' '}
-        <Link to="/mais/exportar" className="font-semibold text-primary underline">
+        <Link to="/mais/exportar" className="font-semibold text-tint underline">
           exporte uma planilha
         </Link>{' '}
         para não perdê-los.

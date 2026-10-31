@@ -17,7 +17,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, { failed: 
     if (!this.state.failed) return this.props.children;
     return (
       <main className="mx-auto flex min-h-dvh max-w-md flex-col items-center justify-center gap-4 p-6 text-center">
-        <h1 className="text-2xl font-bold">Algo deu errado</h1>
+        <h1 className="text-title1 font-bold">Algo deu errado</h1>
         <p className="text-muted">
           Seus dados continuam salvos no aparelho. Recarregue o app para continuar.
         </p>

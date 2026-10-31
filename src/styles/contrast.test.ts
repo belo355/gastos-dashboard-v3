@@ -45,6 +45,22 @@ describe.each([
     expect(contrast(t['primary-ink']!, t.primary!)).toBeGreaterThanOrEqual(4.5);
   });
 
+  it('azul de links e ícones (tint) tem contraste >= 4,5:1 nas superfícies e no próprio preenchimento', () => {
+    for (const bg of ['bg', 'surface', 'surface-2', 'tint-fill']) {
+      expect(contrast(t.tint!, t[bg]!)).toBeGreaterThanOrEqual(4.5);
+    }
+  });
+
+  it('botão de perigo: texto (cor da superfície) sobre o vermelho >= 4,5:1', () => {
+    expect(contrast(t.surface!, t.danger!)).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it('foco visível tem contraste >= 3:1 no fundo e na superfície', () => {
+    for (const bg of ['bg', 'surface']) {
+      expect(contrast(t.focus!, t[bg]!)).toBeGreaterThanOrEqual(3);
+    }
+  });
+
   it('estados do orçamento têm contraste >= 4,5:1 no próprio fundo e na superfície', () => {
     for (const s of ['ok', 'warning', 'danger']) {
       expect(contrast(t[s]!, t[`${s}-bg`]!)).toBeGreaterThanOrEqual(4.5);

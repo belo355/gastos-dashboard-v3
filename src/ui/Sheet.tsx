@@ -75,14 +75,16 @@ export function Modal({
 
   if (!open) return null;
 
-  const panelClass =
-    placement === 'sheet'
-      ? 'mt-auto w-full max-w-lg rounded-t-3xl sm:m-auto sm:rounded-3xl'
-      : 'm-auto w-[calc(100%-2rem)] max-w-sm rounded-3xl';
+  const isSheet = placement === 'sheet';
+  // Sheet: sobe da base, cantos grandes e alça, como as sheets do iOS.
+  // Center: alerta compacto e centralizado, como o UIAlertController.
+  const panelClass = isSheet
+    ? 'sheet-panel mt-auto w-full max-w-lg rounded-t-[1.75rem] px-5 pt-2 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:m-auto sm:rounded-[1.75rem] sm:pb-5'
+    : 'alert-panel m-auto w-[calc(100%-3rem)] max-w-xs rounded-[1.5rem] p-5 text-center';
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex bg-black/50"
+      className="scrim fixed inset-0 z-50 flex bg-scrim"
       onMouseDown={(e) => e.target === e.currentTarget && onClose()}
     >
       <div
@@ -91,23 +93,32 @@ export function Modal({
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={description ? descId : undefined}
-        className={`sheet-panel flex max-h-[92dvh] flex-col overflow-y-auto bg-surface p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-2xl ${panelClass}`}
+        className={`flex max-h-[92dvh] flex-col overflow-y-auto bg-surface shadow-[0_-8px_40px_-12px_rgb(0_0_0/0.35)] ${panelClass}`}
       >
-        <div className="mb-3 flex items-start justify-between gap-2">
-          <h2 id={titleId} className="text-xl font-bold">
+        {isSheet && (
+          <span aria-hidden className="mx-auto mb-2 h-[5px] w-9 shrink-0 rounded-full bg-border" />
+        )}
+        <div
+          className={`flex gap-2 ${isSheet ? 'mb-4 items-center justify-between' : 'mb-1 justify-center'}`}
+        >
+          <h2
+            id={titleId}
+            className={isSheet ? 'text-title2 font-bold' : 'text-headline font-semibold'}
+          >
             {title}
           </h2>
           {role === 'dialog' && (
             <IconButton
               label="Fechar"
-              icon={<X aria-hidden size={22} />}
+              tone="filled"
+              icon={<X aria-hidden size={30} strokeWidth={2.75} />}
               onClick={onClose}
-              className="-mr-2 -mt-2"
+              className="-mr-2"
             />
           )}
         </div>
         {description && (
-          <p id={descId} className="mb-4 text-muted">
+          <p id={descId} className={isSheet ? 'mb-4 text-muted' : 'mb-5 text-footnote text-text'}>
             {description}
           </p>
         )}

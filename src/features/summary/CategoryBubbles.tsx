@@ -107,7 +107,8 @@ function Bubble({
           textAnchor="middle"
           dominantBaseline="middle"
           fill="var(--cat-ink)"
-          fontWeight={800}
+          fontFamily="var(--font-rounded)"
+          fontWeight={700}
           fontSize={Math.max(11, Math.min(22, node.r * 0.32))}
         >
           {formatPercent(node.percent)}
@@ -120,6 +121,7 @@ function Bubble({
           dominantBaseline="middle"
           fill="var(--cat-ink)"
           fontWeight={600}
+          letterSpacing="-0.01em"
           fontSize={Math.max(10, Math.min(15, node.r * 0.2))}
         >
           {cat.name}

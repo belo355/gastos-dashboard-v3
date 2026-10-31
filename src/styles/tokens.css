@@ -1,76 +1,91 @@
 /*
- * Tokens de design. Tema claro por padrão; o escuro segue a preferência do sistema.
- * As cores de categoria têm duas variantes:
- *   --cat-<id>      preenchimento (gráficos, ícones)
- *   --cat-<id>-ink  texto sobre o preenchimento (contraste >= 4,5:1)
- * O contraste é verificado em src/styles/contrast.test.ts.
+ * Tokens de design — paleta inspirada no iOS (fundo agrupado, células brancas, azul do sistema).
+ * Tema claro por padrão; o escuro segue a preferência do sistema.
+ * As cores de categoria seguem as cores do sistema da Apple: no claro, as variantes de
+ * "Aumentar contraste" (texto branco por cima); no escuro, as cores escuras do sistema (texto preto).
+ *   --cat-<id>  preenchimento (gráficos, ícones)
+ *   --cat-ink   texto sobre o preenchimento (contraste >= 4,5:1)
+ * --primary é o preenchimento de botões (texto --primary-ink); --tint é o azul de links e ícones
+ * sobre as superfícies. O contraste é verificado em src/styles/contrast.test.ts.
  */
 :root {
   color-scheme: light dark;
 
-  --bg: #f6f7fb;
+  --bg: #f2f2f7;
   --surface: #ffffff;
-  --surface-2: #eef0f7;
-  --border: #d4d8e4;
-  --text: #121826;
-  --text-muted: #4a5468;
-  --primary: #4338ca;
+  --surface-2: #e9e9ee;
+  --border: #c6c6c8;
+  --separator: #d8d8dc;
+  --text: #1d1d1f;
+  --text-muted: #636366;
+  --primary: #0071e3;
   --primary-ink: #ffffff;
-  --focus: #1d4ed8;
+  --tint: #0066cc;
+  --tint-fill: #e3eefa;
+  --focus: #0066cc;
+  --material: rgb(249 249 251 / 0.9);
+  --surface-bar: #f9f9fb;
+  --scrim: rgb(0 0 0 / 0.32);
 
-  --ok: #15803d;
-  --warning: #854d0e;
-  --danger: #b91c1c;
-  --ok-bg: #dcfce7;
-  --warning-bg: #fef3c7;
-  --danger-bg: #fee2e2;
+  --ok: #1e7b34;
+  --warning: #9a4a00;
+  --danger: #d70015;
+  --ok-bg: #e4f4e8;
+  --warning-bg: #fff2dc;
+  --danger-bg: #ffebec;
 
-  --cat-alimentacao: #c2410c;
-  --cat-mercado: #15803d;
-  --cat-moradia: #1d4ed8;
-  --cat-transporte: #7e22ce;
-  --cat-carro: #b91c1c;
-  --cat-saude: #be185d;
-  --cat-educacao: #0e7490;
-  --cat-lazer: #a16207;
-  --cat-jogos: #4338ca;
-  --cat-vestuario: #a21caf;
-  --cat-familia: #0f766e;
-  --cat-outros: #475569;
+  --cat-alimentacao: #c93400;
+  --cat-mercado: #1e7b34;
+  --cat-moradia: #0040dd;
+  --cat-transporte: #0071a4;
+  --cat-carro: #d70015;
+  --cat-saude: #d30f45;
+  --cat-educacao: #3634a3;
+  --cat-lazer: #a14a00;
+  --cat-jogos: #8944ab;
+  --cat-vestuario: #7f6545;
+  --cat-familia: #0c7d77;
+  --cat-outros: #636366;
   --cat-ink: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0b1020;
-    --surface: #141a2e;
-    --surface-2: #1d2540;
-    --border: #2f3a5c;
-    --text: #eef1f8;
-    --text-muted: #b4bccf;
-    --primary: #a5b4fc;
-    --primary-ink: #0b1020;
-    --focus: #93c5fd;
+    --bg: #000000;
+    --surface: #1c1c1e;
+    --surface-2: #2c2c2e;
+    --border: #48484a;
+    --separator: #38383a;
+    --text: #f5f5f7;
+    --text-muted: #98989f;
+    --primary: #0071e3;
+    --primary-ink: #ffffff;
+    --tint: #409cff;
+    --tint-fill: #0d2a4d;
+    --focus: #409cff;
+    --material: rgb(22 22 24 / 0.9);
+    --surface-bar: #161618;
+    --scrim: rgb(0 0 0 / 0.56);
 
-    --ok: #4ade80;
-    --warning: #facc15;
-    --danger: #f87171;
-    --ok-bg: #12301f;
-    --warning-bg: #3a2f0b;
-    --danger-bg: #3d1515;
+    --ok: #30d158;
+    --warning: #ffd60a;
+    --danger: #ff6961;
+    --ok-bg: #0f2a17;
+    --warning-bg: #2e2604;
+    --danger-bg: #3a1214;
 
-    --cat-alimentacao: #fb923c;
-    --cat-mercado: #4ade80;
-    --cat-moradia: #60a5fa;
-    --cat-transporte: #c084fc;
-    --cat-carro: #f87171;
-    --cat-saude: #f472b6;
-    --cat-educacao: #22d3ee;
-    --cat-lazer: #facc15;
-    --cat-jogos: #818cf8;
-    --cat-vestuario: #e879f9;
-    --cat-familia: #2dd4bf;
-    --cat-outros: #94a3b8;
-    --cat-ink: #0b1020;
+    --cat-alimentacao: #ff9f0a;
+    --cat-mercado: #30d158;
+    --cat-moradia: #0a84ff;
+    --cat-transporte: #64d2ff;
+    --cat-carro: #ff453a;
+    --cat-saude: #ff375f;
+    --cat-educacao: #7d7aff;
+    --cat-lazer: #ffd60a;
+    --cat-jogos: #bf5af2;
+    --cat-vestuario: #ac8e68;
+    --cat-familia: #63e6e2;
+    --cat-outros: #98989d;
+    --cat-ink: #000000;
   }
 }

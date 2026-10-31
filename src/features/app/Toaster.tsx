@@ -27,13 +27,6 @@ interface ToastApi {
 
 const ToastContext = createContext<ToastApi | null>(null);
 
-const TONES: Record<ToastTone, string> = {
-  success: 'border-ok bg-ok-bg text-text',
-  info: 'border-border bg-surface text-text',
-  warning: 'border-warning bg-warning-bg text-text',
-  danger: 'border-danger bg-danger-bg text-text',
-};
-
 function ToneIcon({ tone }: { tone: ToastTone }) {
   if (tone === 'success') return <CircleCheck aria-hidden className="text-ok" size={22} />;
   if (tone === 'warning' || tone === 'danger')
@@ -44,7 +37,7 @@ function ToneIcon({ tone }: { tone: ToastTone }) {
         size={22}
       />
     );
-  return <Info aria-hidden className="text-primary" size={22} />;
+  return <Info aria-hidden className="text-tint" size={22} />;
 }
 
 /** Avisos curtos. Ficam em regiões aria-live: "polite" para confirmações, "assertive" para alertas. */
@@ -71,14 +64,14 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     list.map((t) => (
       <div
         key={t.id}
-        className={`toast pointer-events-auto flex items-center gap-3 rounded-2xl border-2 px-4 py-3 shadow-lg ${TONES[t.tone]}`}
+        className="toast pointer-events-auto bg-surface flex items-center gap-3 rounded-[1.375rem] py-2 pl-4 pr-1 text-text shadow-[0_12px_32px_-10px_rgb(0_0_0/0.35)] ring-1 ring-separator"
       >
         <ToneIcon tone={t.tone} />
-        <p className="flex-1 font-medium">{t.message}</p>
+        <p className="flex-1 text-subhead font-semibold">{t.message}</p>
         {t.action && (
           <button
             type="button"
-            className="min-h-11 rounded-lg px-3 font-bold text-primary underline-offset-2 hover:underline"
+            className="press min-h-9 rounded-full bg-primary px-4 text-subhead font-semibold text-primary-ink"
             onClick={() => {
               t.action!.onClick();
               dismiss(t.id);
@@ -90,7 +83,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         <button
           type="button"
           aria-label="Fechar aviso"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted"
           onClick={() => dismiss(t.id)}
         >
           <X aria-hidden size={18} />

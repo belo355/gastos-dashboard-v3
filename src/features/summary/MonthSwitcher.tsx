@@ -8,20 +8,20 @@ export function MonthSwitcher() {
   const { month, setMonth } = useAppState();
   const isCurrent = month === currentMonth();
   return (
-    <div className="flex items-center justify-between gap-1 rounded-2xl bg-surface px-1 py-1 shadow-sm">
+    <div className="flex items-center justify-between gap-1">
       <IconButton
         label="Mês anterior"
-        icon={<ChevronLeft aria-hidden />}
+        icon={<ChevronLeft aria-hidden size={26} strokeWidth={2.5} />}
         onClick={() => setMonth(addMonths(month, -1))}
       />
-      <div className="flex flex-col items-center">
-        <p className="text-lg font-bold" aria-live="polite" data-testid="month-label">
+      <div className="flex min-h-11 flex-col items-center justify-center">
+        <p className="text-headline font-semibold" aria-live="polite" data-testid="month-label">
           {formatMonthLabel(month)}
         </p>
         {!isCurrent && (
           <button
             type="button"
-            className="min-h-6 text-sm font-semibold text-primary underline-offset-2 hover:underline"
+            className="min-h-6 text-footnote font-semibold text-tint underline-offset-2 hover:underline"
             onClick={() => setMonth(currentMonth())}
           >
             Voltar para hoje
@@ -30,7 +30,7 @@ export function MonthSwitcher() {
       </div>
       <IconButton
         label="Próximo mês"
-        icon={<ChevronRight aria-hidden />}
+        icon={<ChevronRight aria-hidden size={26} strokeWidth={2.5} />}
         onClick={() => setMonth(addMonths(month, 1))}
       />
     </div>

@@ -28,7 +28,7 @@ export function WipeData() {
 
   return (
     <section aria-labelledby="wipe-title" className="flex flex-col gap-4">
-      <h1 id="wipe-title" className="text-2xl font-bold">
+      <h1 id="wipe-title" className="text-large-title font-bold">
         Apagar do aparelho
       </h1>
       <p>
