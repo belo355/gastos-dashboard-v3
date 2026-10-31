@@ -1,0 +1,34 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "./dist",
+      "isSinglePageApplication": true,
+      "numberOfRuns": 3,
+      "url": ["http://localhost/"],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "onlyCategories": ["performance", "accessibility", "best-practices"]
+      }
+    },
+    "assert": {
+      "assertions": {
+        "largest-contentful-paint": [
+          "error",
+          { "maxNumericValue": 2500, "aggregationMethod": "median" }
+        ],
+        "first-contentful-paint": [
+          "warn",
+          { "maxNumericValue": 2000, "aggregationMethod": "median" }
+        ],
+        "total-blocking-time": ["warn", { "maxNumericValue": 300, "aggregationMethod": "median" }],
+        "categories:accessibility": ["error", { "minScore": 0.95 }],
+        "categories:best-practices": ["warn", { "minScore": 0.9 }]
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": "./.cache/lhci"
+    }
+  }
+}

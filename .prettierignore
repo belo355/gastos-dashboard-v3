@@ -1,0 +1,10 @@
+dist
+dev-dist
+coverage
+playwright-report
+test-results
+.cache
+node_modules
+package-lock.json
+tasks
+.claude
