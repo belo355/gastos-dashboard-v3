@@ -19,7 +19,7 @@ export function TemplateDownload() {
   }
   return (
     <section aria-labelledby="modelo-title" className="flex flex-col gap-4">
-      <h1 id="modelo-title" className="text-2xl font-bold">
+      <h1 id="modelo-title" className="text-large-title font-bold">
         Planilha modelo
       </h1>
       <p className="text-muted">

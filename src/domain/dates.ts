@@ -73,6 +73,39 @@ export function formatDate(date: DateString): string {
   return `${date.slice(8, 10)}/${date.slice(5, 7)}/${date.slice(0, 4)}`;
 }
 
+const WEEKDAYS = [
+  'domingo',
+  'segunda-feira',
+  'terça-feira',
+  'quarta-feira',
+  'quinta-feira',
+  'sexta-feira',
+  'sábado',
+];
+
+/** Dias corridos entre duas datas (b − a), sem depender do fuso. */
+function dayDiff(a: DateString, b: DateString): number {
+  const ms = (d: DateString) =>
+    Date.UTC(Number(d.slice(0, 4)), Number(d.slice(5, 7)) - 1, Number(d.slice(8, 10)));
+  return Math.round((ms(b) - ms(a)) / 86_400_000);
+}
+
+/**
+ * Título de um dia na lista de lançamentos: "Hoje", "Ontem" ou "sexta-feira, 24 de outubro"
+ * (o ano só aparece quando não é o ano de hoje).
+ */
+export function formatDayHeading(date: DateString, reference: DateString = today()): string {
+  const diff = dayDiff(date, reference);
+  if (diff === 0) return 'Hoje';
+  if (diff === 1) return 'Ontem';
+  const y = Number(date.slice(0, 4));
+  const m = Number(date.slice(5, 7));
+  const d = Number(date.slice(8, 10));
+  const weekday = WEEKDAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()]!;
+  const base = `${weekday}, ${d} de ${MONTHS[m - 1]!.toLowerCase()}`;
+  return y === Number(reference.slice(0, 4)) ? base : `${base} de ${y}`;
+}
+
 /** Último dia do mês como data. */
 export function lastDayOfMonth(month: MonthKey): DateString {
   const y = Number(month.slice(0, 4));

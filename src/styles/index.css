@@ -6,17 +6,57 @@
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-border: var(--border);
+  --color-separator: var(--separator);
   --color-text: var(--text);
   --color-muted: var(--text-muted);
   --color-primary: var(--primary);
   --color-primary-ink: var(--primary-ink);
+  --color-tint: var(--tint);
+  --color-tint-fill: var(--tint-fill);
+  --color-material: var(--material);
+  --color-scrim: var(--scrim);
   --color-ok: var(--ok);
   --color-warning: var(--warning);
   --color-danger: var(--danger);
   --color-ok-bg: var(--ok-bg);
   --color-warning-bg: var(--warning-bg);
   --color-danger-bg: var(--danger-bg);
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-rounded:
+    ui-rounded, 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto,
+    sans-serif;
+}
+
+/* Escala tipográfica do iOS (Dynamic Type, tamanho padrão), em rem para acompanhar o zoom. */
+@theme {
+  --text-large-title: 2.125rem;
+  --text-large-title--line-height: 2.5625rem;
+  --text-large-title--letter-spacing: 0.012em;
+  --text-title1: 1.75rem;
+  --text-title1--line-height: 2.125rem;
+  --text-title2: 1.375rem;
+  --text-title2--line-height: 1.75rem;
+  --text-title3: 1.25rem;
+  --text-title3--line-height: 1.5625rem;
+  --text-headline: 1.0625rem;
+  --text-headline--line-height: 1.375rem;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.375rem;
+  --text-callout: 1rem;
+  --text-callout--line-height: 1.3125rem;
+  --text-subhead: 0.9375rem;
+  --text-subhead--line-height: 1.25rem;
+  --text-footnote: 0.8125rem;
+  --text-footnote--line-height: 1.125rem;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1rem;
+  --text-caption2: 0.6875rem;
+  --text-caption2--line-height: 0.8125rem;
+
+  --ease-apple: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html,
@@ -25,11 +65,34 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   margin: 0;
   min-height: 100dvh;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  letter-spacing: -0.0255em;
+}
+
+/* Superfícies do navegador também seguem a paleta. */
+::selection {
+  background: var(--tint-fill);
+  color: var(--text);
+}
+input,
+textarea {
+  caret-color: var(--tint);
+}
+* {
+  scrollbar-color: var(--border) transparent;
+  scrollbar-width: thin;
+}
+input[type='date'] {
+  color-scheme: light dark;
 }
 
 :focus-visible {
@@ -39,6 +102,13 @@ body {
 
 .tabular {
   font-variant-numeric: tabular-nums;
+}
+
+/* Números de dinheiro no estilo dos apps Saúde e Atividade (SF Rounded onde houver). */
+.figure {
+  font-family: var(--font-rounded);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
 }
 
 .sr-only {
@@ -53,13 +123,42 @@ body {
   border: 0;
 }
 
+/* Barras translúcidas (barra de abas, título compacto): o conteúdo passa por baixo, desfocado. */
+.material {
+  background: var(--material);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+/* Sem desfoque no navegador, a barra fica opaca para o texto de baixo não aparecer. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .material {
+    background: var(--surface-bar);
+  }
+}
+
+/* Listas agrupadas do iOS: separador fino que começa depois do ícone. */
+.grouped > li + li .row-body {
+  border-top: 1px solid var(--separator);
+}
+
+/* Toque: leve encolhimento, como nos controles do iOS. */
+.press {
+  transition:
+    transform 160ms var(--ease-out-expo),
+    opacity 160ms var(--ease-out-expo),
+    background-color 160ms ease;
+}
+.press:active {
+  transform: scale(0.97);
+}
+
 /* Microanimações (desligadas com "reduzir movimento" pela regra abaixo). */
 @keyframes launch-pop {
   0% {
     transform: scale(1);
   }
   35% {
-    transform: scale(1.14);
+    transform: scale(1.1);
   }
   100% {
     transform: scale(1);
@@ -69,9 +168,23 @@ body {
   animation: launch-pop 600ms cubic-bezier(0.2, 0.9, 0.3, 1.3);
 }
 
+/* Sheet sobe da base com a curva das sheets do iOS. */
 @keyframes sheet-in {
   from {
-    transform: translateY(24px);
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+.sheet-panel {
+  animation: sheet-in 460ms var(--ease-apple);
+}
+
+/* Alerta central: surge levemente maior e assenta, como o UIAlertController. */
+@keyframes alert-in {
+  from {
+    transform: scale(1.12);
     opacity: 0;
   }
   to {
@@ -79,13 +192,25 @@ body {
     opacity: 1;
   }
 }
-.sheet-panel {
-  animation: sheet-in 220ms ease-out;
+.alert-panel {
+  animation: alert-in 300ms var(--ease-out-expo);
+}
+
+@keyframes scrim-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.scrim {
+  animation: scrim-in 300ms ease-out;
 }
 
 @keyframes toast-in {
   from {
-    transform: translateY(-12px);
+    transform: translateY(-140%) scale(0.9);
     opacity: 0;
   }
   to {
@@ -94,11 +219,22 @@ body {
   }
 }
 .toast {
-  animation: toast-in 200ms ease-out;
+  animation: toast-in 520ms var(--ease-out-expo);
+}
+
+/* O título compacto da barra aparece quando o título grande sai da tela. */
+.compact-title {
+  transition:
+    opacity 220ms ease,
+    transform 320ms var(--ease-out-expo);
 }
 
 .progress-fill {
-  transition: width 500ms ease-out;
+  transition: width 700ms var(--ease-out-expo);
+}
+
+.ring-fill {
+  transition: stroke-dashoffset 900ms var(--ease-out-expo);
 }
 
 @media (prefers-reduced-motion: reduce) {

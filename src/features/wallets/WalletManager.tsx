@@ -46,7 +46,7 @@ export function WalletManager() {
 
   return (
     <section aria-labelledby="cart-title" className="flex flex-col gap-4">
-      <h1 id="cart-title" className="text-2xl font-bold">
+      <h1 id="cart-title" className="text-large-title font-bold">
         Carteiras
       </h1>
       <p className="text-muted">
@@ -57,7 +57,7 @@ export function WalletManager() {
       <form
         noValidate
         onSubmit={onCreate}
-        className="flex flex-col gap-2 rounded-2xl bg-surface p-4 shadow-sm"
+        className="flex flex-col gap-2 rounded-2xl bg-surface p-4"
       >
         <label htmlFor={ids.name} className="font-semibold">
           Nova carteira
@@ -84,10 +84,10 @@ export function WalletManager() {
           return (
             <li
               key={w.id}
-              className="flex items-center gap-2 rounded-2xl bg-surface p-2 pl-4 shadow-sm"
+              className="flex items-center gap-2 rounded-2xl bg-surface p-2 pl-4"
               data-testid="wallet-item"
             >
-              <WalletMinimal aria-hidden size={20} className="text-primary" />
+              <WalletMinimal aria-hidden size={20} className="text-tint" />
               <span className="flex min-w-0 flex-1 flex-col">
                 <span className="truncate font-semibold">{w.name}</span>
                 {w.isSample && (
@@ -113,7 +113,7 @@ export function WalletManager() {
               <IconButton
                 label={`Excluir ${w.name}`}
                 icon={<Trash2 aria-hidden size={18} />}
-                className="text-danger"
+                className="!text-danger"
                 onClick={() => setRemoving(w)}
               />
             </li>

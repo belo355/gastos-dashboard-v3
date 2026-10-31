@@ -6,7 +6,7 @@ import { formatMoneyInput, parseMoney } from '../../domain/money';
 import type { MonthKey } from '../../domain/types';
 import { errorMessage } from '../../lib/errors';
 import { Button } from '../../ui/Button';
-import { FieldError } from '../../ui/Field';
+import { FieldError, labelClass } from '../../ui/Field';
 import { MoneyInput } from '../../ui/MoneyInput';
 import { Modal } from '../../ui/Sheet';
 import { useToast } from '../app/Toaster';
@@ -81,7 +81,7 @@ function EditorForm({
   return (
     <form noValidate onSubmit={onSubmit} className="flex flex-col gap-4">
       <div>
-        <label htmlFor={ids.input} className="mb-1 block font-semibold">
+        <label htmlFor={ids.input} className={labelClass}>
           Limite mensal
         </label>
         <MoneyInput
@@ -92,7 +92,7 @@ function EditorForm({
           invalid={!!error}
           aria-describedby={`${ids.hint}${error ? ` ${ids.err}` : ''}`}
         />
-        <p id={ids.hint} className="mt-1 text-sm text-muted">
+        <p id={ids.hint} className="mt-1.5 px-1 text-footnote text-muted">
           Vale a partir de {formatMonthLabel(month)} e nos meses seguintes, até você mudar.
         </p>
         <FieldError id={ids.err}>{error}</FieldError>
@@ -105,7 +105,7 @@ function EditorForm({
           <Button
             variant="ghost"
             block
-            className="text-danger"
+            className="!text-danger"
             disabled={busy}
             onClick={() => void persist(null)}
           >

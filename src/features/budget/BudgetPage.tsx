@@ -5,6 +5,8 @@ import { formatMoney } from '../../domain/money';
 import { useBudgets } from '../../hooks/useBudgets';
 import { IconButton } from '../../ui/Button';
 import { CategoryBadge } from '../../ui/CategoryIcon';
+import { GroupedList, SectionHeader } from '../../ui/Grouped';
+import { PageHeader } from '../../ui/PageHeader';
 import { useAppState } from '../app/AppState';
 import { BudgetOverview } from '../summary/BudgetOverview';
 import { MonthSwitcher } from '../summary/MonthSwitcher';
@@ -18,13 +20,11 @@ export function BudgetPage() {
   const [editing, setEditing] = useState<CategoryId | null>(null);
 
   return (
-    <section aria-labelledby="orc-title" className="flex flex-col gap-4">
-      <h1 id="orc-title" className="text-2xl font-bold">
-        Orçamento
-      </h1>
+    <section aria-labelledby="orc-title" className="flex flex-col gap-3">
+      <PageHeader id="orc-title" title="Orçamento" />
       <WalletSwitcher />
       <MonthSwitcher />
-      <p className="text-muted">
+      <p className="px-1 text-subhead text-muted">
         Defina quanto quer gastar por mês em cada categoria e acompanhe o progresso.
       </p>
 
@@ -32,28 +32,33 @@ export function BudgetPage() {
         <>
           {data.rows.length > 0 && <BudgetOverview totals={data.totals} />}
 
-          <ul aria-label="Categorias com limite" className="flex flex-col gap-2">
-            {data.rows.map(({ categoryId, progress }) => (
-              <li key={categoryId}>
-                <BudgetRow
-                  categoryId={categoryId}
-                  progress={progress}
-                  action={
-                    <IconButton
-                      label={`Alterar limite de ${getCategory(categoryId).name}`}
-                      icon={<Pencil aria-hidden size={18} />}
-                      onClick={() => setEditing(categoryId)}
-                    />
-                  }
-                />
-              </li>
-            ))}
-          </ul>
+          {data.rows.length > 0 && (
+            <GroupedList label="Categorias com limite">
+              {data.rows.map(({ categoryId, progress }) => (
+                <li key={categoryId}>
+                  <BudgetRow
+                    categoryId={categoryId}
+                    progress={progress}
+                    action={
+                      <IconButton
+                        label={`Alterar limite de ${getCategory(categoryId).name}`}
+                        icon={<Pencil aria-hidden size={18} />}
+                        onClick={() => setEditing(categoryId)}
+                        className="-mr-2"
+                      />
+                    }
+                  />
+                </li>
+              ))}
+            </GroupedList>
+          )}
 
-          <h2 className="mt-2 text-lg font-bold">
-            {data.rows.length > 0 ? 'Outras categorias' : 'Escolha uma categoria para começar'}
-          </h2>
-          <ul aria-label="Categorias sem limite" className="grid gap-2 sm:grid-cols-2">
+          <SectionHeader
+            title={
+              data.rows.length > 0 ? 'Outras categorias' : 'Escolha uma categoria para começar'
+            }
+          />
+          <GroupedList label="Categorias sem limite">
             {CATEGORIES.filter((c) => !data.limits.has(c.id)).map((c) => {
               const spent = data.spentByCategory.get(c.id) ?? 0;
               return (
@@ -63,25 +68,27 @@ export function BudgetPage() {
                     onClick={() => setEditing(c.id)}
                     data-testid="budget-define"
                     data-category={c.id}
-                    className="flex min-h-14 w-full items-center gap-3 rounded-2xl border-2 border-dashed border-border bg-surface px-3 py-2 text-left hover:bg-surface-2"
+                    className="flex min-h-14 w-full items-center gap-3 pl-4 text-left hover:bg-surface-2/60 active:bg-surface-2"
                   >
-                    <CategoryBadge id={c.id} size={32} />
-                    <span className="flex flex-1 flex-col">
-                      <span className="font-semibold">{c.name}</span>
-                      {spent > 0 && (
-                        <span className="tabular text-sm text-muted">
-                          {formatMoney(spent)} no mês
-                        </span>
-                      )}
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary">
-                      <Plus aria-hidden size={16} /> Definir limite
+                    <CategoryBadge id={c.id} size={30} />
+                    <span className="row-body flex flex-1 items-center gap-3 self-stretch py-2 pr-4">
+                      <span className="flex flex-1 flex-col">
+                        <span className="font-medium">{c.name}</span>
+                        {spent > 0 && (
+                          <span className="figure text-footnote text-muted">
+                            {formatMoney(spent)} no mês
+                          </span>
+                        )}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-subhead font-semibold text-tint">
+                        <Plus aria-hidden size={16} strokeWidth={2.5} /> Definir limite
+                      </span>
                     </span>
                   </button>
                 </li>
               );
             })}
-          </ul>
+          </GroupedList>
         </>
       )}
 

@@ -5,6 +5,7 @@ import {
   dateToExcelSerial,
   excelSerialToDate,
   formatDate,
+  formatDayHeading,
   formatMonthLabel,
   formatMonthName,
   isValidDate,
@@ -66,5 +67,19 @@ describe('datas', () => {
     expect(excelSerialToDate(46324)).toBe('2026-10-29');
     expect(dateToExcelSerial('2026-10-29')).toBe(46324);
     expect(excelSerialToDate(0)).toBeNull();
+  });
+});
+
+describe('formatDayHeading', () => {
+  it('"Hoje" e "Ontem" relativos à data de referência, inclusive na virada de mês', () => {
+    expect(formatDayHeading('2026-10-31', '2026-10-31')).toBe('Hoje');
+    expect(formatDayHeading('2026-10-30', '2026-10-31')).toBe('Ontem');
+    expect(formatDayHeading('2026-10-31', '2026-11-01')).toBe('Ontem');
+  });
+
+  it('demais dias com dia da semana e mês por extenso; ano só quando difere', () => {
+    expect(formatDayHeading('2026-10-23', '2026-10-31')).toBe('sexta-feira, 23 de outubro');
+    expect(formatDayHeading('2025-12-28', '2026-01-05')).toBe('domingo, 28 de dezembro de 2025');
+    expect(formatDayHeading('2026-11-02', '2026-10-31')).toBe('segunda-feira, 2 de novembro');
   });
 });

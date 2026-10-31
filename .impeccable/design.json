@@ -1,0 +1,814 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T05:35:48.816Z",
+  "title": "Design System: Gastos do Dia",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "Cinza Agrupado",
+        "canonical": "oklch(96.3% 0.007 286.3)",
+        "dark": "#000000",
+        "tonalRamp": [
+          "#0b0b0d",
+          "#242427",
+          "#3f3f43",
+          "#5d5d61",
+          "#808084",
+          "#a4a4a8",
+          "#cacacd",
+          "#eeeeef"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Célula",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "dark": "#1c1c1e",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "Preenchimento",
+        "canonical": "oklch(93.5% 0.007 286.3)",
+        "dark": "#2c2c2e",
+        "tonalRamp": [
+          "#0b0b0d",
+          "#242427",
+          "#3f3f43",
+          "#5d5d61",
+          "#808084",
+          "#a4a4a8",
+          "#cacacd",
+          "#eeeeef"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Borda",
+        "canonical": "oklch(82.7% 0.003 286.3)",
+        "dark": "#48484a",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#242425",
+          "#3f3f41",
+          "#5d5d5f",
+          "#808082",
+          "#a4a4a6",
+          "#cacacb",
+          "#eeeeee"
+        ]
+      },
+      "separator": {
+        "role": "neutral",
+        "displayName": "Separador",
+        "canonical": "oklch(88.3% 0.005 286.3)",
+        "dark": "#38383a",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#242426",
+          "#3f3f43",
+          "#5d5d61",
+          "#808083",
+          "#a4a4a7",
+          "#cacacc",
+          "#eeeeef"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Rótulo",
+        "canonical": "oklch(23.2% 0.004 286.1)",
+        "dark": "#f5f5f7",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#242426",
+          "#3f3f42",
+          "#5d5d60",
+          "#808082",
+          "#a4a4a7",
+          "#cacacc",
+          "#eeeeee"
+        ]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Rótulo Secundário",
+        "canonical": "oklch(50.1% 0.005 286.2)",
+        "dark": "#98989f",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#242426",
+          "#3f3f42",
+          "#5d5d60",
+          "#808083",
+          "#a4a4a7",
+          "#cacacc",
+          "#eeeeef"
+        ]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Azul de Preenchimento",
+        "canonical": "oklch(56.3% 0.193 256.2)",
+        "dark": "#0071e3",
+        "tonalRamp": [
+          "#000137",
+          "#001470",
+          "#0033a2",
+          "#0057c7",
+          "#197df0",
+          "#56a5ff",
+          "#99cdff",
+          "#e8eff8"
+        ]
+      },
+      "primary-ink": {
+        "role": "neutral",
+        "displayName": "Tinta do Botão",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "dark": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "tint": {
+        "role": "primary",
+        "displayName": "Azul de Sistema",
+        "canonical": "oklch(52.2% 0.177 255.8)",
+        "dark": "#409cff",
+        "tonalRamp": [
+          "#000333",
+          "#001969",
+          "#003699",
+          "#0059be",
+          "#287ee7",
+          "#5da6ff",
+          "#9dceff",
+          "#e9eff7"
+        ]
+      },
+      "tint-fill": {
+        "role": "primary",
+        "displayName": "Fundo Tingido",
+        "canonical": "oklch(94.4% 0.020 250.4)",
+        "dark": "#0d2a4d",
+        "tonalRamp": [
+          "#080c10",
+          "#1e252c",
+          "#38414a",
+          "#555f69",
+          "#78818c",
+          "#9da6b0",
+          "#c5cbd2",
+          "#eeeeef"
+        ]
+      },
+      "focus": {
+        "role": "primary",
+        "displayName": "Foco",
+        "canonical": "oklch(52.2% 0.177 255.8)",
+        "dark": "#409cff",
+        "tonalRamp": [
+          "#000333",
+          "#001969",
+          "#003699",
+          "#0059be",
+          "#287ee7",
+          "#5da6ff",
+          "#9dceff",
+          "#e9eff7"
+        ]
+      },
+      "material": {
+        "role": "neutral",
+        "displayName": "Material da Barra",
+        "canonical": "rgb(249 249 251 / 0.9)",
+        "dark": "rgb(22 22 24 / 0.9)"
+      },
+      "surface-bar": {
+        "role": "neutral",
+        "displayName": "Barra Opaca",
+        "canonical": "oklch(98.3% 0.003 286.4)",
+        "dark": "#161618",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#242425",
+          "#3f3f41",
+          "#5d5d5f",
+          "#808082",
+          "#a4a4a6",
+          "#cacacb",
+          "#eeeeee"
+        ]
+      },
+      "scrim": {
+        "role": "neutral",
+        "displayName": "Véu",
+        "canonical": "rgb(0 0 0 / 0.32)",
+        "dark": "rgb(0 0 0 / 0.56)"
+      },
+      "ok": {
+        "role": "tertiary",
+        "displayName": "Verde de Sistema",
+        "canonical": "oklch(51.3% 0.136 147.2)",
+        "dark": "#30d158",
+        "tonalRamp": [
+          "#001200",
+          "#003100",
+          "#005105",
+          "#0d712a",
+          "#3e954d",
+          "#6eb977",
+          "#a8d9ac",
+          "#eaf0eb"
+        ]
+      },
+      "warning": {
+        "role": "tertiary",
+        "displayName": "Âmbar de Sistema",
+        "canonical": "oklch(50.1% 0.128 52.5)",
+        "dark": "#ffd60a",
+        "tonalRamp": [
+          "#200000",
+          "#490900",
+          "#702300",
+          "#934400",
+          "#ba672d",
+          "#dc905f",
+          "#f3bd9d",
+          "#f4ede9"
+        ]
+      },
+      "danger": {
+        "role": "tertiary",
+        "displayName": "Vermelho de Sistema",
+        "canonical": "oklch(55.3% 0.225 27.3)",
+        "dark": "#ff6961",
+        "tonalRamp": [
+          "#2f0000",
+          "#630000",
+          "#940000",
+          "#bc0000",
+          "#e82728",
+          "#ff675b",
+          "#ffa79b",
+          "#f9ebe8"
+        ]
+      },
+      "ok-bg": {
+        "role": "tertiary",
+        "displayName": "Fundo Verde",
+        "canonical": "oklch(95.2% 0.023 153.5)",
+        "dark": "#0f2a17",
+        "tonalRamp": [
+          "#070d09",
+          "#1d2720",
+          "#37433a",
+          "#546258",
+          "#76847a",
+          "#9ba99f",
+          "#c4cdc6",
+          "#eeefee"
+        ]
+      },
+      "warning-bg": {
+        "role": "tertiary",
+        "displayName": "Fundo Âmbar",
+        "canonical": "oklch(96.6% 0.032 81.0)",
+        "dark": "#2e2604",
+        "tonalRamp": [
+          "#0f0a04",
+          "#2b2315",
+          "#493e2c",
+          "#675c49",
+          "#8a7f6b",
+          "#aea391",
+          "#d1cabd",
+          "#efeeed"
+        ]
+      },
+      "danger-bg": {
+        "role": "tertiary",
+        "displayName": "Fundo Vermelho",
+        "canonical": "oklch(95.6% 0.022 14.1)",
+        "dark": "#3a1214",
+        "tonalRamp": [
+          "#10090a",
+          "#2c2021",
+          "#4b3b3c",
+          "#69595a",
+          "#8d7b7c",
+          "#b0a0a1",
+          "#d3c7c8",
+          "#efeeee"
+        ]
+      },
+      "cat-alimentacao": {
+        "role": "secondary",
+        "displayName": "Alimentação (Laranja)",
+        "canonical": "oklch(55.2% 0.192 35.3)",
+        "dark": "#ff9f0a",
+        "tonalRamp": [
+          "#2a0000",
+          "#5b0000",
+          "#890000",
+          "#b01300",
+          "#da461d",
+          "#fc7755",
+          "#ffb098",
+          "#f8ebe8"
+        ]
+      },
+      "cat-mercado": {
+        "role": "secondary",
+        "displayName": "Mercado (Verde)",
+        "canonical": "oklch(51.3% 0.136 147.2)",
+        "dark": "#30d158",
+        "tonalRamp": [
+          "#001200",
+          "#003100",
+          "#005105",
+          "#0d712a",
+          "#3e954d",
+          "#6eb977",
+          "#a8d9ac",
+          "#eaf0eb"
+        ]
+      },
+      "cat-moradia": {
+        "role": "secondary",
+        "displayName": "Moradia (Azul)",
+        "canonical": "oklch(46.4% 0.242 263.3)",
+        "dark": "#0a84ff",
+        "tonalRamp": [
+          "#020043",
+          "#010084",
+          "#0015bc",
+          "#0446e2",
+          "#2c70ff",
+          "#5a9cff",
+          "#99c9ff",
+          "#e8effb"
+        ]
+      },
+      "cat-transporte": {
+        "role": "secondary",
+        "displayName": "Transporte (Ciano)",
+        "canonical": "oklch(52.1% 0.116 238.4)",
+        "dark": "#64d2ff",
+        "tonalRamp": [
+          "#000c23",
+          "#00274d",
+          "#004575",
+          "#006597",
+          "#2c89bd",
+          "#62aede",
+          "#a1d2f3",
+          "#e9eff4"
+        ]
+      },
+      "cat-carro": {
+        "role": "secondary",
+        "displayName": "Carro (Vermelho)",
+        "canonical": "oklch(55.3% 0.225 27.3)",
+        "dark": "#ff453a",
+        "tonalRamp": [
+          "#2f0000",
+          "#630000",
+          "#940000",
+          "#bc0000",
+          "#e82728",
+          "#ff675b",
+          "#ffa79b",
+          "#f9ebe8"
+        ]
+      },
+      "cat-saude": {
+        "role": "secondary",
+        "displayName": "Saúde (Rosa)",
+        "canonical": "oklch(55.4% 0.216 16.1)",
+        "dark": "#ff375f",
+        "tonalRamp": [
+          "#2d0000",
+          "#600000",
+          "#900012",
+          "#b80030",
+          "#e42b52",
+          "#ff677b",
+          "#ffa7ae",
+          "#f9eaeb"
+        ]
+      },
+      "cat-educacao": {
+        "role": "secondary",
+        "displayName": "Educação (Índigo)",
+        "canonical": "oklch(40.4% 0.173 276.2)",
+        "dark": "#7d7aff",
+        "tonalRamp": [
+          "#070032",
+          "#190b68",
+          "#2f2998",
+          "#484cbc",
+          "#6771e5",
+          "#8c9aff",
+          "#b8c5ff",
+          "#eceef7"
+        ]
+      },
+      "cat-lazer": {
+        "role": "secondary",
+        "displayName": "Lazer (Âmbar)",
+        "canonical": "oklch(51.2% 0.135 50.3)",
+        "dark": "#ffd60a",
+        "tonalRamp": [
+          "#210000",
+          "#4b0400",
+          "#731f00",
+          "#974000",
+          "#be642a",
+          "#e08d5d",
+          "#f6bc9c",
+          "#f4ede9"
+        ]
+      },
+      "cat-jogos": {
+        "role": "secondary",
+        "displayName": "Jogos (Roxo)",
+        "canonical": "oklch(51.9% 0.166 313.0)",
+        "dark": "#bf5af2",
+        "tonalRamp": [
+          "#180026",
+          "#3a0052",
+          "#5d127c",
+          "#7d389f",
+          "#a25dc6",
+          "#c587e6",
+          "#e1b8f9",
+          "#f1ecf4"
+        ]
+      },
+      "cat-vestuario": {
+        "role": "secondary",
+        "displayName": "Vestuário (Marrom)",
+        "canonical": "oklch(52.5% 0.057 71.9)",
+        "dark": "#ac8e68",
+        "tonalRamp": [
+          "#130900",
+          "#322006",
+          "#523a1b",
+          "#725839",
+          "#967b5a",
+          "#b9a082",
+          "#d9c7b3",
+          "#f0eeeb"
+        ]
+      },
+      "cat-familia": {
+        "role": "secondary",
+        "displayName": "Família (Verde-água)",
+        "canonical": "oklch(53.3% 0.090 188.8)",
+        "dark": "#63e6e2",
+        "tonalRamp": [
+          "#00110f",
+          "#002f2b",
+          "#004e49",
+          "#006d68",
+          "#2e918b",
+          "#65b5af",
+          "#a3d6d1",
+          "#eaf0ef"
+        ]
+      },
+      "cat-outros": {
+        "role": "secondary",
+        "displayName": "Outros (Cinza)",
+        "canonical": "oklch(50.1% 0.005 286.2)",
+        "dark": "#98989d",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#242426",
+          "#3f3f42",
+          "#5d5d60",
+          "#808083",
+          "#a4a4a7",
+          "#cacacc",
+          "#eeeeef"
+        ]
+      },
+      "cat-ink": {
+        "role": "secondary",
+        "displayName": "Tinta de Categoria",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "dark": "#000000",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "large-title": {
+        "displayName": "Large Title",
+        "purpose": "h1 de cada aba; recolhe para a barra translúcida ao rolar."
+      },
+      "title1": {
+        "displayName": "Title 1",
+        "purpose": "Valor do campo de dinheiro padrão."
+      },
+      "title2": {
+        "displayName": "Title 2",
+        "purpose": "Título de sheet."
+      },
+      "title3": {
+        "displayName": "Title 3",
+        "purpose": "Cabeçalho de seção, título de estado vazio, porcentagem de orçamento."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Rótulos de botão, mês, título de alerta, subtítulo em painel."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido e campos."
+      },
+      "callout": {
+        "displayName": "Callout",
+        "purpose": "Texto de apoio um degrau abaixo do corpo."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "Rótulos de campo, chips, termos do orçamento, linha de comparação."
+      },
+      "footnote": {
+        "displayName": "Footnote",
+        "purpose": "Rodapés de seção e valores secundários."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Cápsulas de estado."
+      },
+      "caption2": {
+        "displayName": "Caption 2",
+        "purpose": "Rótulos da barra de abas."
+      },
+      "figure-hero": {
+        "displayName": "Número do Mês",
+        "purpose": "Total gasto no mês, em SF Rounded tabular."
+      },
+      "figure-entry": {
+        "displayName": "Número de Lançamento",
+        "purpose": "Valor no MoneyInput hero, como no Apple Cash."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sheet",
+        "value": "0 -8px 40px -12px rgb(0 0 0 / 0.35)",
+        "purpose": "Sheets e alertas sobre o véu."
+      },
+      {
+        "name": "floating",
+        "value": "0 10px 28px -8px rgb(0 0 0 / 0.45)",
+        "purpose": "Cápsula Lançar."
+      },
+      {
+        "name": "toast",
+        "value": "0 12px 32px -10px rgb(0 0 0 / 0.35)",
+        "purpose": "Toast no topo, com anel de 1 px separator."
+      },
+      {
+        "name": "ring-tip",
+        "value": "drop-shadow(1px 0 2px rgb(0 0 0 / 0.35))",
+        "purpose": "Ponta do anel de orçamento acima de 90%."
+      },
+      {
+        "name": "material",
+        "value": "backdrop-filter: saturate(180%) blur(20px)",
+        "purpose": "Barras fixas translúcidas; sem suporte a desfoque, fundo opaco surface-bar."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-apple",
+        "value": "cubic-bezier(0.32, 0.72, 0, 1)",
+        "purpose": "Sheet subindo da base (460 ms)."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Toque (160 ms), alerta (300 ms), toast (520 ms), título compacto (320 ms), barras (700 ms), anel (900 ms)."
+      },
+      {
+        "name": "press",
+        "value": "transform: scale(0.97)",
+        "purpose": "Encolhimento ao tocar em controles."
+      },
+      {
+        "name": "launch-pop",
+        "value": "600ms cubic-bezier(0.2, 0.9, 0.3, 1.3)",
+        "purpose": "Pulso da cápsula Lançar ao salvar (vira verde ok com check)."
+      },
+      {
+        "name": "bubble-spring",
+        "value": "spring stiffness 170, damping 22, mass 0.9",
+        "purpose": "Entrada e reacomodação das bolhas."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation: none; transition: none",
+        "purpose": "Com prefers-reduced-motion, toda animação e transição é desligada."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "column",
+        "value": "672px"
+      }
+    ],
+    "themes": {
+      "default": "light",
+      "dark": "prefers-color-scheme: dark; valores em colorMeta.<token>.dark"
+    },
+    "constraints": [
+      "CSP estrita sem unsafe-inline: sem atributos style em HTML estático e sem <select> nativo.",
+      "Contraste verificado em src/styles/contrast.test.ts."
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão Primário",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Cápsula preenchida com o azul de preenchimento; ação principal de sheets e estados vazios.",
+      "html": "<button class=\"ds-btn-primary\">Salvar</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:8px 20px;border:none;border-radius:9999px;font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;font-size:1.0625rem;line-height:1.375rem;font-weight:600;background:var(--primary,#0071e3);color:var(--primary-ink,#fff);cursor:pointer;transition:transform 160ms cubic-bezier(0.16,1,0.3,1),filter 160ms ease,background-color 160ms ease}.ds-btn-primary:hover{filter:brightness(1.1)}.ds-btn-primary:active{transform:scale(0.97)}.ds-btn-primary:focus-visible{outline:3px solid var(--focus,#0066cc);outline-offset:2px}.ds-btn-primary:disabled{opacity:0.5;cursor:not-allowed}"
+    },
+    {
+      "name": "Botão Tingido",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Cápsula tingida (tint-fill + tint) para ações secundárias.",
+      "html": "<button class=\"ds-btn-secondary\">Exportar mês</button>",
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:8px 20px;border:none;border-radius:9999px;font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;font-size:1.0625rem;line-height:1.375rem;font-weight:600;background:var(--tint-fill,#e3eefa);color:var(--tint,#0066cc);cursor:pointer;transition:transform 160ms cubic-bezier(0.16,1,0.3,1),filter 160ms ease,background-color 160ms ease}.ds-btn-secondary:hover{filter:brightness(0.97)}.ds-btn-secondary:active{transform:scale(0.97)}.ds-btn-secondary:focus-visible{outline:3px solid var(--focus,#0066cc);outline-offset:2px}.ds-btn-secondary:disabled{opacity:0.5;cursor:not-allowed}"
+    },
+    {
+      "name": "Botão Destrutivo",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Cápsula vermelha para apagar dados, sempre após confirmação.",
+      "html": "<button class=\"ds-btn-danger\">Apagar</button>",
+      "css": ".ds-btn-danger{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:8px 20px;border:none;border-radius:9999px;font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;font-size:1.0625rem;line-height:1.375rem;font-weight:600;background:var(--danger,#d70015);color:var(--surface,#fff);cursor:pointer;transition:transform 160ms cubic-bezier(0.16,1,0.3,1),filter 160ms ease,background-color 160ms ease}.ds-btn-danger:hover{filter:brightness(1.1)}.ds-btn-danger:active{transform:scale(0.97)}.ds-btn-danger:focus-visible{outline:3px solid var(--focus,#0066cc);outline-offset:2px}.ds-btn-danger:disabled{opacity:0.5;cursor:not-allowed}"
+    },
+    {
+      "name": "Cápsula Lançar",
+      "kind": "button",
+      "refersTo": "launch-button",
+      "description": "Ação flutuante sempre visível acima da barra de abas; única cápsula com sombra de flutuação.",
+      "html": "<button class=\"ds-launch\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"><path d=\"M5 12h14M12 5v14\"/></svg><span>Lançar</span></button>",
+      "css": ".ds-launch{display:inline-flex;align-items:center;gap:8px;min-height:56px;padding:0 24px 0 20px;border:none;border-radius:9999px;background:var(--primary,#0071e3);color:var(--primary-ink,#fff);font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;font-size:1.0625rem;font-weight:600;box-shadow:0 10px 28px -8px rgb(0 0 0/0.45);cursor:pointer;transition:transform 160ms cubic-bezier(0.16,1,0.3,1)}.ds-launch:hover{filter:brightness(1.1)}.ds-launch:active{transform:scale(0.97)}.ds-launch:focus-visible{outline:3px solid var(--focus,#0066cc);outline-offset:2px}"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo preenchido como os formulários do iOS, com rótulo Subhead acima.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-label\">Descrição</span><input class=\"ds-input\" placeholder=\"Ex.: almoço\"></label>",
+      "css": ".ds-field{display:block;font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif}.ds-label{display:block;margin-bottom:6px;font-size:0.9375rem;font-weight:600;color:var(--text-muted,#636366)}.ds-input{box-sizing:border-box;width:100%;min-height:48px;padding:0 16px;border:none;border-radius:12px;background:var(--surface-2,#e9e9ee);color:var(--text,#1d1d1f);font:inherit;font-size:1.0625rem;outline:none}.ds-input::placeholder{color:var(--text-muted,#636366)}.ds-input:focus{box-shadow:0 0 0 2px var(--tint,#0066cc)}.ds-input[aria-invalid=true]{box-shadow:0 0 0 2px var(--danger,#d70015)}"
+    },
+    {
+      "name": "Chips de Carteira",
+      "kind": "chip",
+      "refersTo": "wallet-chip",
+      "description": "Cápsulas de carteira; a ativa é invertida.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"false\">Pessoal</button><button class=\"ds-chip\" aria-pressed=\"true\">Casa</button></div>",
+      "css": ".ds-chips{display:flex;gap:8px}.ds-chip{min-height:44px;padding:0 16px;border:none;border-radius:9999px;font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;font-size:0.9375rem;font-weight:600;background:var(--surface,#fff);color:var(--text,#1d1d1f);cursor:pointer;transition:transform 160ms cubic-bezier(0.16,1,0.3,1)}.ds-chip:hover{background:var(--surface-2,#e9e9ee)}.ds-chip[aria-pressed=true]{background:var(--text,#1d1d1f);color:var(--surface,#fff)}.ds-chip:active{transform:scale(0.97)}.ds-chip:focus-visible{outline:3px solid var(--focus,#0066cc);outline-offset:2px}"
+    },
+    {
+      "name": "Linhas de Orçamento",
+      "kind": "card",
+      "refersTo": "grouped-list",
+      "description": "Lista agrupada inset: squircle da categoria, cápsula de estado, porcentagem arredondada e barra na cor da categoria (listrada em danger quando estoura).",
+      "html": "<ul class=\"ds-group\"><li class=\"ds-row\"><span class=\"ds-tile\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"21\" r=\"1\"/><circle cx=\"19\" cy=\"21\" r=\"1\"/><path d=\"M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12\"/></svg></span><div class=\"ds-body\"><div class=\"ds-top\"><div><b>Mercado</b><br><span class=\"ds-pill\">Dentro do limite</span></div><span class=\"ds-fig\">62%</span></div><div class=\"ds-track\"><div class=\"ds-fill\"></div></div></div></li><li class=\"ds-row\"><span class=\"ds-tile ds-tile-2\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5.8 11.3 2 22l10.7-3.79\"/><path d=\"M4 3h.01M22 8h.01M15 2h.01M22 20h.01\"/><path d=\"m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10\"/><path d=\"M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z\"/></svg></span><div class=\"ds-body ds-sep\"><div class=\"ds-top\"><div><b>Lazer</b><br><span class=\"ds-pill ds-over\">Estourado</span></div><span class=\"ds-fig\">112%</span></div><div class=\"ds-track\"><div class=\"ds-fill ds-fill-over\"></div></div></div></li></ul>",
+      "css": ".ds-group{list-style:none;margin:0;padding:0;border-radius:16px;overflow:hidden;background:var(--surface,#fff);font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;color:var(--text,#1d1d1f)}.ds-row{display:flex;gap:12px;padding-left:16px}.ds-row:hover{background:color-mix(in srgb,var(--surface-2,#e9e9ee) 60%,transparent)}.ds-tile{margin-top:14px;width:34px;height:34px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--cat-mercado,#1e7b34);color:var(--cat-ink,#fff)}.ds-tile-2{background:var(--cat-lazer,#a14a00)}.ds-body{flex:1;display:flex;flex-direction:column;gap:8px;padding:12px 16px 12px 0}.ds-sep{border-top:1px solid var(--separator,#d8d8dc)}.ds-top{display:flex;justify-content:space-between;align-items:center}.ds-pill{display:inline-block;margin-top:4px;padding:2px 8px;border-radius:9999px;font-size:0.75rem;font-weight:600;background:var(--ok-bg,#e4f4e8);color:var(--ok,#1e7b34)}.ds-over{background:var(--danger-bg,#ffebec);color:var(--danger,#d70015)}.ds-fig{font-family:ui-rounded, 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif;font-variant-numeric:tabular-nums;font-size:1.25rem;font-weight:700}.ds-track{height:8px;border-radius:9999px;background:var(--surface-2,#e9e9ee);overflow:hidden}.ds-fill{height:100%;width:62%;border-radius:9999px;background:var(--cat-mercado,#1e7b34)}.ds-fill-over{width:100%;background:var(--danger,#d70015);background-image:repeating-linear-gradient(45deg,transparent 0 5px,color-mix(in srgb,var(--surface,#fff) 45%,transparent) 5px 8px)}"
+    },
+    {
+      "name": "Anel de Orçamento",
+      "kind": "custom",
+      "refersTo": "panel",
+      "description": "Assinatura: anel no estilo Atividade (tint; danger quando estoura) com Orçado, Gasto e Saldo ao lado.",
+      "html": "<div class=\"ds-ring-card\"><div class=\"ds-ring\"><svg width=\"96\" height=\"96\" viewBox=\"0 0 96 96\"><circle cx=\"48\" cy=\"48\" r=\"41\" fill=\"none\" stroke=\"var(--tint,#0066cc)\" stroke-opacity=\"0.18\" stroke-width=\"14\"/><circle cx=\"48\" cy=\"48\" r=\"41\" fill=\"none\" stroke=\"var(--tint,#0066cc)\" stroke-width=\"14\" stroke-linecap=\"round\" stroke-dasharray=\"257.6\" stroke-dashoffset=\"77.3\"/></svg><span>70%</span></div><dl><div><dt>Orçado</dt><dd>R$ 3.000,00</dd></div><div><dt>Gasto</dt><dd>R$ 2.100,00</dd></div><div class=\"ds-bal\"><dt>Saldo</dt><dd>R$ 900,00</dd></div></dl></div>",
+      "css": ".ds-ring-card{display:flex;align-items:center;gap:16px;padding:16px;border-radius:16px;background:var(--surface,#fff);font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;color:var(--text,#1d1d1f)}.ds-ring{position:relative;flex-shrink:0}.ds-ring svg{display:block;transform:rotate(-90deg)}.ds-ring span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:ui-rounded, 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif;font-variant-numeric:tabular-nums;font-size:0.9375rem;font-weight:700}.ds-ring-card dl{flex:1;margin:0;display:grid;gap:6px}.ds-ring-card dl div{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.ds-ring-card dt{font-size:0.9375rem;color:var(--text-muted,#636366)}.ds-ring-card dd{margin:0;font-family:ui-rounded, 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif;font-variant-numeric:tabular-nums;font-weight:600}.ds-ring-card .ds-bal{border-top:1px solid var(--separator,#d8d8dc);padding-top:6px}.ds-bal dt{color:var(--text,#1d1d1f);font-weight:600}.ds-bal dd{color:var(--ok,#1e7b34);font-weight:700;font-size:1.0625rem}"
+    },
+    {
+      "name": "Barra de Abas",
+      "kind": "nav",
+      "refersTo": "tab-bar",
+      "description": "Quatro abas em material translúcido; ativa em tint com traço mais grosso.",
+      "html": "<nav class=\"ds-tabs\"><a class=\"ds-tab ds-active\" href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z\"/><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"/></svg>Resumo</a><a class=\"ds-tab\" href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\"><path d=\"M3 12h.01M3 18h.01M3 6h.01M8 12h13M8 18h13M8 6h13\"/></svg>Lançamentos</a><a class=\"ds-tab\" href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><circle cx=\"12\" cy=\"12\" r=\"6\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/></svg>Orçamento</a><a class=\"ds-tab\" href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"1\"/><circle cx=\"19\" cy=\"12\" r=\"1\"/><circle cx=\"5\" cy=\"12\" r=\"1\"/></svg>Mais</a></nav>",
+      "css": ".ds-tabs{display:grid;grid-template-columns:repeat(4,1fr);background:var(--material,rgb(249 249 251/0.9));-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--separator,#d8d8dc);font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif}.ds-tab{min-height:56px;padding-top:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:0.6875rem;font-weight:500;color:var(--text-muted,#636366);text-decoration:none}.ds-tab:hover{color:var(--text,#1d1d1f)}.ds-tab.ds-active{color:var(--tint,#0066cc)}.ds-tab:focus-visible{outline:3px solid var(--focus,#0066cc);outline-offset:2px}"
+    },
+    {
+      "name": "Sheet",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "Painel que sobe da base com alça, título Title 2, botão fechar preenchido e valor no estilo Apple Cash.",
+      "html": "<div class=\"ds-sheet\"><span class=\"ds-grab\"></span><div class=\"ds-head\"><h2>Novo gasto</h2><button class=\"ds-close\" aria-label=\"Fechar\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.75\" stroke-linecap=\"round\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button></div><p class=\"ds-money\"><span>R$</span>42,90</p></div>",
+      "css": ".ds-sheet{max-width:512px;padding:8px 20px 20px;border-radius:28px 28px 0 0;background:var(--surface,#fff);box-shadow:0 -8px 40px -12px rgb(0 0 0/0.35);font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;color:var(--text,#1d1d1f)}.ds-grab{display:block;margin:0 auto 8px;width:36px;height:5px;border-radius:9999px;background:var(--border,#c6c6c8)}.ds-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.ds-head h2{margin:0;font-size:1.375rem;font-weight:700}.ds-close{width:44px;height:44px;border:none;background:none;display:flex;align-items:center;justify-content:center;color:var(--text-muted,#636366);cursor:pointer;border-radius:9999px}.ds-close svg{padding:6px;border-radius:9999px;background:var(--surface-2,#e9e9ee)}.ds-close:active{transform:scale(0.97)}.ds-close:focus-visible{outline:3px solid var(--focus,#0066cc);outline-offset:2px}.ds-money{margin:0;text-align:center;font-family:ui-rounded, 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif;font-variant-numeric:tabular-nums;font-size:3.25rem;line-height:1.1;font-weight:700;letter-spacing:-0.01em}.ds-money span{font-size:1.75rem;font-weight:600;color:var(--text-muted,#636366);margin-right:6px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Como se a Apple tivesse lançado",
+    "overview": "O app se lê como um app de sistema do iPhone levado para a web: títulos grandes que recolhem numa barra translúcida ao rolar, listas agrupadas inset sobre o fundo cinza agrupado, ícones de categoria em squircle como os dos Ajustes, sheets que sobem da base com alça, botões em cápsula. Cada peça é um idioma da Human Interface Guidelines reconhecível, não uma imitação decorativa; a densidade é a do iOS (corpo de 17 px, alvos de 44 px, linhas de lista de 64 px).\n\nO mundo recusa o painel genérico de cartões empilhados com um cartão-herói colorido. O destaque não vem de cor de fundo, e sim de números grandes em SF Rounded (como nos apps Saúde e Atividade), das bolhas de categoria em cores do sistema e do anel de orçamento no estilo do app Atividade. Superfícies são planas e brancas (pretas no escuro); profundidade só existe no que flutua.\n\nClaro por padrão, escuro pela preferência do sistema, com os pares de cores claro/escuro da própria Apple. Todo movimento segue as curvas do iOS e desaparece por completo com \"reduzir movimento\".",
+    "keyCharacteristics": [
+      "Fundo agrupado `#f2f2f7` / preto puro, células brancas / `#1c1c1e`, sem bordas em volta dos grupos.",
+      "Escala tipográfica do Dynamic Type (tamanho padrão) em rem; pilha SF do sistema; dinheiro em SF Rounded tabular.",
+      "Doze cores de categoria = cores do sistema Apple, com tinta branca no claro e preta no escuro.",
+      "Azul em dois papéis: `primary` preenche botões, `tint` é link, ícone, aba ativa e anel.",
+      "Materiais translúcidos (blur 20 px, saturação 180%) só nas barras fixas.",
+      "Cápsulas para ações, raio 16 px para grupos, raios maiores para o que flutua."
+    ],
+    "rules": [
+      {
+        "name": "The Two Blues Rule",
+        "body": "`primary` só preenche; `tint` só pinta texto, ícone e traço sobre superfícies. Nunca troque um pelo outro.",
+        "section": "colors"
+      },
+      {
+        "name": "The Category Fill Rule",
+        "body": "Uma barra de orçamento se pinta com a cor da sua categoria enquanto está no limite; acima de 100% passa a `danger` com listras diagonais. O anel geral é `tint` e passa a `danger` só quando estoura. O estado \"alerta\" se diz em texto e na cápsula, não muda a barra.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tested Contrast Rule",
+        "body": "Toda cor sai de `src/styles/tokens.css` e todo par texto/fundo e gráfico/fundo é verificado em `src/styles/contrast.test.ts` (4,5:1 texto, 3:1 gráficos). Cor nova sem teste não entra. Cor nunca é o único identificador: estado tem ícone e rótulo, estouro tem listras.",
+        "section": "colors"
+      },
+      {
+        "name": "The Rounded Money Rule",
+        "body": "Todo valor monetário e porcentagem usa a família arredondada com `tabular-nums`; rótulos nunca usam.",
+        "section": "typography"
+      },
+      {
+        "name": "The Dynamic Type Rule",
+        "body": "Tamanhos só da escala `--text-*` em rem (os dois números-herói são as únicas exceções); nada em px, para acompanhar o zoom até 200%.",
+        "section": "typography"
+      },
+      {
+        "name": "The Floating-Only Shadow Rule",
+        "body": "Grupos, painéis e linhas nunca têm sombra; só o que flutua (sheet, alerta, toast, cápsula Lançar) a recebe.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Material Bar Rule",
+        "body": "Barras fixas usam `material` com `backdrop-filter: saturate(180%) blur(20px)` e um separador fino; sem suporte a desfoque, ficam opacas em `surface-bar`.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** usar só tokens de `src/styles/tokens.css` e acrescentar todo par novo a `src/styles/contrast.test.ts`.",
+      "**Do** preencher botões com `primary` e pintar links, ícones e traços com `tint`.",
+      "**Do** colocar conteúdo em grupos `surface` de raio 16 px sobre `bg`, com separador começando depois do ícone.",
+      "**Do** escrever todo valor em R$ e porcentagem na família arredondada com algarismos tabulares.",
+      "**Do** dar a todo estado texto e ícone além da cor; estouro ganha listras.",
+      "**Do** animar com `ease-apple` (sheets) e `ease-out-expo` (toques, barras, anel), toque com `scale(0.97)`, e deixar \"reduzir movimento\" desligar todas as animações e transições.",
+      "**Do** manter alvos de toque com no mínimo 44 × 44 px."
+    ],
+    "donts": [
+      "**Don't** montar a tela como pilha de cartões com um cartão-herói colorido; o destaque vem do número e das bolhas, não de fundo de cor.",
+      "**Don't** pôr sombra ou borda em grupos e painéis; sombra só no que flutua.",
+      "**Don't** usar `warning` como preenchimento de barra nem trocar a cor da barra no estado \"alerta\".",
+      "**Don't** usar `<select>` nativo nem atributos `style` em HTML estático (a CSP proíbe `'unsafe-inline'`).",
+      "**Don't** usar tamanhos de fonte fora da escala `--text-*` além dos dois números-herói."
+    ],
+    "openDecisions": [
+      "Fora de aparelhos Apple, a pilha cai para a sans da plataforma (Segoe UI no Windows, Roboto no Android), porque SF não pode ser auto-hospedada. Manter assim ou adotar uma face licenciável está pendente de decisão do usuário; não é regra do sistema."
+    ]
+  }
+}

@@ -41,7 +41,7 @@ export function AppShell() {
       >
         Pular para o conteúdo
       </a>
-      <main id="conteudo" className="flex-1 px-4 pb-44 pt-[max(1rem,env(safe-area-inset-top))]">
+      <main id="conteudo" className="flex-1 px-4 pb-44 pt-[max(0.75rem,env(safe-area-inset-top))]">
         <Outlet />
       </main>
 
@@ -50,21 +50,21 @@ export function AppShell() {
         data-testid="launch-button"
         aria-label="Lançar"
         onClick={form.openNew}
-        className={`fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom))] right-[max(1rem,calc(50%-21rem))] z-40 inline-flex min-h-14 items-center gap-2 rounded-full px-6 text-lg font-bold text-primary-ink shadow-xl hover:opacity-95 ${
-          pulse ? 'launch-pop bg-ok' : 'bg-primary'
+        className={`press fixed bottom-[calc(5rem+env(safe-area-inset-bottom))] right-[max(1rem,calc(50%-21rem))] z-40 inline-flex min-h-14 items-center gap-2 rounded-full pl-5 pr-6 text-headline font-semibold shadow-[0_10px_28px_-8px_rgb(0_0_0/0.45)] hover:brightness-110 ${
+          pulse ? 'launch-pop bg-ok text-surface' : 'bg-primary text-primary-ink'
         }`}
       >
         {pulse ? (
-          <Check aria-hidden size={24} strokeWidth={3} />
+          <Check aria-hidden size={22} strokeWidth={3} />
         ) : (
-          <Plus aria-hidden size={24} strokeWidth={3} />
+          <Plus aria-hidden size={22} strokeWidth={3} />
         )}
         <span aria-hidden>{pulse ? 'Salvo!' : 'Lançar'}</span>
       </button>
 
       <nav
         aria-label="Navegação principal"
-        className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur"
+        className="material fixed inset-x-0 bottom-0 z-30 border-t border-separator pb-[env(safe-area-inset-bottom)]"
       >
         <ul className="mx-auto grid max-w-2xl grid-cols-4">
           {NAV.map(({ to, label, icon: Icon, end }) => (
@@ -73,12 +73,12 @@ export function AppShell() {
                 to={to}
                 end={end}
                 className={({ isActive }) =>
-                  `flex min-h-16 flex-col items-center justify-center gap-1 text-xs font-semibold ${isActive ? 'text-primary' : 'text-muted'}`
+                  `flex min-h-[3.5rem] flex-col items-center justify-center gap-0.5 pt-1.5 text-caption2 font-medium ${isActive ? 'text-tint' : 'text-muted'}`
                 }
               >
                 {({ isActive }) => (
                   <>
-                    <Icon aria-hidden size={24} strokeWidth={isActive ? 2.75 : 2} />
+                    <Icon aria-hidden size={25} strokeWidth={isActive ? 2.5 : 1.9} />
                     {label}
                   </>
                 )}

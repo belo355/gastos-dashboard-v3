@@ -44,29 +44,39 @@ export function Welcome() {
   }
 
   return (
-    <main className="mx-auto flex min-h-dvh max-w-md flex-col gap-6 px-6 pb-8 pt-[max(2rem,env(safe-area-inset-top))]">
-      <p className="text-sm font-semibold text-muted" aria-live="polite">
-        Passo {step + 1} de {STEPS.length}
-      </p>
+    <main className="mx-auto flex min-h-dvh max-w-md flex-col gap-6 px-6 pb-[max(2rem,env(safe-area-inset-bottom))] pt-[max(2rem,env(safe-area-inset-top))]">
+      <div className="flex items-center justify-between">
+        <p className="text-subhead font-semibold text-muted" aria-live="polite">
+          Passo {step + 1} de {STEPS.length}
+        </p>
+        <span aria-hidden className="flex gap-1.5">
+          {STEPS.map((s, i) => (
+            <span
+              key={s.title}
+              className={`h-2 rounded-full transition-all duration-300 ${i === step ? 'w-5 bg-text' : 'w-2 bg-border'}`}
+            />
+          ))}
+        </span>
+      </div>
       <section
         aria-labelledby="welcome-title"
         className="flex flex-1 flex-col items-center justify-center gap-4 text-center"
       >
-        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary text-primary-ink shadow-lg">
+        <div
+          key={step}
+          className="alert-panel mb-2 flex h-28 w-28 items-center justify-center rounded-[1.75rem] bg-primary text-primary-ink shadow-[0_16px_36px_-14px_rgb(0_0_0/0.5)]"
+        >
           {current.icon}
         </div>
-        <h1 id="welcome-title" className="text-3xl font-extrabold">
+        <h1 id="welcome-title" className="text-large-title font-bold text-balance">
           {current.title}
         </h1>
-        <p className="text-lg text-muted">{current.text}</p>
+        <p className="max-w-[32ch] text-body text-muted">{current.text}</p>
       </section>
 
-      <div
-        className="flex gap-3 rounded-2xl border-2 border-border bg-surface p-4"
-        data-testid="privacy-notice"
-      >
-        <ShieldCheck aria-hidden className="shrink-0 text-ok" />
-        <p className="text-sm">
+      <div className="flex gap-3 rounded-2xl bg-surface p-4" data-testid="privacy-notice">
+        <ShieldCheck aria-hidden size={26} className="shrink-0 text-tint" />
+        <p className="text-footnote">
           <strong>Seus dados ficam só neste aparelho.</strong> Não há conta nem servidor. Se você
           limpar os dados do navegador, os gastos são apagados — por isso, exporte uma planilha de
           vez em quando.

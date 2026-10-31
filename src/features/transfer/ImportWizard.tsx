@@ -78,7 +78,7 @@ export function ImportWizard() {
 
   return (
     <section aria-labelledby="imp-title" className="flex flex-col gap-4">
-      <h1 id="imp-title" className="text-2xl font-bold">
+      <h1 id="imp-title" className="text-large-title font-bold">
         Importar planilha
       </h1>
 
@@ -86,7 +86,7 @@ export function ImportWizard() {
         <>
           <p className="text-muted">
             Escolha um ou mais arquivos .xlsx no formato do app (veja a{' '}
-            <Link to="/mais/modelo" className="font-semibold text-primary underline">
+            <Link to="/mais/modelo" className="font-semibold text-tint underline">
               planilha modelo
             </Link>
             ). O arquivo é lido aqui no aparelho e nunca é enviado.
@@ -100,7 +100,7 @@ export function ImportWizard() {
           <div>
             <label
               htmlFor={inputId}
-              className="flex min-h-24 cursor-pointer flex-col items-center justify-center gap-2 rounded-3xl border-2 border-dashed border-primary bg-surface p-4 text-center font-semibold text-primary focus-within:outline-3 focus-within:outline-[var(--focus)]"
+              className="flex min-h-24 cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-primary bg-surface p-4 text-center font-semibold text-tint focus-within:outline-3 focus-within:outline-[var(--focus)]"
             >
               <Upload aria-hidden size={28} />
               {step.kind === 'reading' ? 'Lendo planilha…' : 'Escolher planilhas (.xlsx)'}
@@ -119,7 +119,7 @@ export function ImportWizard() {
           {step.kind === 'choose' && step.error && (
             <p
               role="alert"
-              className="rounded-xl border-2 border-danger bg-danger-bg px-3 py-2 font-semibold"
+              className="rounded-xl bg-danger-bg px-4 py-3 font-semibold"
               data-testid="import-error"
             >
               {step.error}
@@ -142,11 +142,11 @@ export function ImportWizard() {
       {step.kind === 'done' && (
         <div
           role="status"
-          className="flex flex-col items-center gap-3 rounded-3xl bg-surface p-6 text-center shadow-sm"
+          className="flex flex-col items-center gap-3 rounded-2xl bg-surface p-6 text-center"
           data-testid="import-done"
         >
           <CircleCheck aria-hidden size={40} className="text-ok" />
-          <p className="text-lg font-bold">Importação concluída</p>
+          <p className="text-title3 font-bold">Importação concluída</p>
           <p>
             {plural(step.count, 'lançamento', 'lançamentos')} em{' '}
             {step.months.map(formatMonthLabel).join(', ')}.
@@ -187,21 +187,21 @@ function PreviewStep({
   const hasConflict = preview.conflicts.length > 0;
   return (
     <div className="flex flex-col gap-4" data-testid="import-preview">
-      <h2 className="text-lg font-bold">Prévia da importação</h2>
+      <h2 className="text-title3 font-bold">Prévia da importação</h2>
       <p className="text-sm text-muted">
         {files.join(', ')} → carteira {walletName}
       </p>
       <dl className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-        <div className="rounded-2xl bg-surface p-3 shadow-sm">
+        <div className="rounded-2xl bg-surface p-3">
           <dt className="text-sm text-muted">Válidos</dt>
-          <dd className="text-lg font-bold" data-testid="preview-valid">
+          <dd className="text-title3 font-bold" data-testid="preview-valid">
             {plural(preview.valid.length, 'lançamento', 'lançamentos')}
           </dd>
           <dd className="tabular text-sm text-muted">{formatMoney(total)}</dd>
         </div>
-        <div className="rounded-2xl bg-surface p-3 shadow-sm">
+        <div className="rounded-2xl bg-surface p-3">
           <dt className="text-sm text-muted">Descartadas</dt>
-          <dd className="text-lg font-bold" data-testid="preview-discarded">
+          <dd className="text-title3 font-bold" data-testid="preview-discarded">
             {plural(preview.discarded.length, 'linha descartada', 'linhas descartadas')}
           </dd>
           {preview.blankRows > 0 && (
@@ -210,9 +210,9 @@ function PreviewStep({
             </dd>
           )}
         </div>
-        <div className="rounded-2xl bg-surface p-3 shadow-sm">
+        <div className="rounded-2xl bg-surface p-3">
           <dt className="text-sm text-muted">Categoria não reconhecida</dt>
-          <dd className="text-lg font-bold" data-testid="preview-others">
+          <dd className="text-title3 font-bold" data-testid="preview-others">
             {preview.remappedToOthers} em Outros
           </dd>
         </div>
@@ -224,7 +224,7 @@ function PreviewStep({
         </span>
       </p>
       {preview.discarded.length > 0 && (
-        <details className="rounded-2xl bg-surface p-3 shadow-sm">
+        <details className="rounded-2xl bg-surface p-3">
           <summary className="min-h-11 cursor-pointer content-center font-semibold">
             Ver linhas descartadas
           </summary>
@@ -241,7 +241,7 @@ function PreviewStep({
       {hasConflict && (
         <div
           role="alert"
-          className="flex gap-3 rounded-2xl border-2 border-warning bg-warning-bg p-3"
+          className="flex gap-3 rounded-2xl bg-warning-bg p-3"
           data-testid="import-conflict"
         >
           <TriangleAlert aria-hidden className="shrink-0 text-warning" />

@@ -13,6 +13,7 @@ interface ConfirmDialogProps {
   onCancel: () => void;
 }
 
+/** Alerta de confirmação no estilo do iOS: ação principal em cima, Cancelar embaixo. */
 export function ConfirmDialog({
   open,
   title,
@@ -33,12 +34,17 @@ export function ConfirmDialog({
       role="alertdialog"
       placement="center"
     >
-      <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
-        <Button variant="secondary" onClick={onCancel} data-autofocus>
-          {cancelLabel}
-        </Button>
-        <Button variant={destructive ? 'danger' : 'primary'} onClick={onConfirm} disabled={busy}>
+      <div className="flex flex-col gap-2">
+        <Button
+          variant={destructive ? 'danger' : 'primary'}
+          block
+          onClick={onConfirm}
+          disabled={busy}
+        >
           {confirmLabel}
+        </Button>
+        <Button variant="secondary" block onClick={onCancel} data-autofocus>
+          {cancelLabel}
         </Button>
       </div>
     </Modal>

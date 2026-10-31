@@ -21,12 +21,12 @@ export function AboutPrivacy() {
 
   return (
     <section aria-labelledby="priv-title" className="flex flex-col gap-4">
-      <h1 id="priv-title" className="text-2xl font-bold">
+      <h1 id="priv-title" className="text-large-title font-bold">
         Privacidade e sobre
       </h1>
 
-      <div className="flex flex-col gap-3 rounded-2xl bg-surface p-4 shadow-sm">
-        <h2 className="text-lg font-bold">Seus dados ficam só neste aparelho</h2>
+      <div className="flex flex-col gap-3 rounded-2xl bg-surface p-4">
+        <h2 className="text-title3 font-bold">Seus dados ficam só neste aparelho</h2>
         <p>
           O Gastos do Dia não tem conta, login nem servidor. Lançamentos, carteiras e orçamentos são
           salvos apenas no armazenamento deste navegador e nunca são enviados para a internet.
@@ -35,7 +35,7 @@ export function AboutPrivacy() {
         <p>
           <strong>Atenção:</strong> se você limpar os dados do navegador ou desinstalar o app, os
           gastos são apagados e não há como recuperá-los. Por isso,{' '}
-          <Link to="/mais/exportar" className="font-semibold text-primary underline">
+          <Link to="/mais/exportar" className="font-semibold text-tint underline">
             exporte uma planilha
           </Link>{' '}
           periodicamente.
@@ -46,8 +46,8 @@ export function AboutPrivacy() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-2 rounded-2xl bg-surface p-4 shadow-sm">
-        <h2 className="text-lg font-bold">Armazenamento</h2>
+      <div className="flex flex-col gap-2 rounded-2xl bg-surface p-4">
+        <h2 className="text-title3 font-bold">Armazenamento</h2>
         <p data-testid="persistence-status">
           {settings.persistenceGranted === true
             ? 'O navegador concedeu armazenamento persistente: seus dados não serão apagados automaticamente para liberar espaço.'
