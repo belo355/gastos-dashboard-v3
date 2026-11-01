@@ -39,9 +39,14 @@ Documentos de referência:
   - instalável e offline depois da primeira carga;
   - tela de privacidade e opção de apagar tudo;
   - tela de erro clara se o armazenamento falhar.
+- **Investimentos** (aba própria, separada das carteiras de gastos):
+  - cadastro de ativos (8 tipos: renda fixa, Tesouro, ações, FIIs, fundos, cripto, previdência, outros), inclusive os que já existem (valor aplicado, data e saldo atual);
+  - movimentações: aporte, resgate e **saldo informado** (o valor que aparece no banco ou na corretora);
+  - o valor de cada ativo parte do último saldo informado e é projetado pela taxa (% do CDI, prefixado ou IPCA +) com as taxas de referência que o usuário mantém (não há cotação online);
+  - painel com patrimônio, valor aplicado, ganho de capital, gráfico mês a mês dividindo aplicado e ganho (ganho = patrimônio − aplicado), distribuição por tipo, ativos agrupados e extrato; detalhe por ativo; dados de exemplo.
 - **Aparência:** tema Automático/Claro/Escuro em Mais → Aparência.
 
-**Fora do escopo** (só com PRD novo): login e nuvem, receitas e saldo, categorias personalizadas, recorrentes e parcelados, metas, streaks e conquistas, notificações push, integrações bancárias, outros formatos de arquivo, apps nativos.
+**Fora do escopo** (só com PRD novo): login e nuvem, receitas e saldo, cotações online e proventos/dividendos de investimentos, exportar investimentos em planilha, categorias personalizadas, recorrentes e parcelados, metas, streaks e conquistas, notificações push, integrações bancárias, outros formatos de arquivo, apps nativos.
 
 **Metas verificadas por testes:**
 
@@ -122,6 +127,9 @@ src/
     transfer/            ExportPanel, ImportWizard, TemplateDownload, WalletSelect
     settings/            MorePage (aba Mais) + moreRoutes, AppearanceSection, AboutPrivacy,
                          WipeData, ExportReminder
+    investments/         InvestmentsPage (aba + formulários), InvestmentsDashboard, AssetDetail,
+                         WealthChart (aplicado × ganho), AllocationDonut, AssetGroups, Statement (extrato),
+                         InvestmentFormSheet, EntryFormSheet, RatesSheet, TypePicker, InvestmentActions
     onboarding/          Welcome (3 passos)
   ui/                    componentes base: Button, Sheet (Modal), ConfirmDialog, Field, MoneyInput,
                          PageHeader, Grouped (listas agrupadas), ProgressBar, CategoryIcon, EmptyState
@@ -129,7 +137,7 @@ src/
   styles/                tokens.css (cores claro/escuro), index.css (Tailwind, tipografia, animações),
                          contrast.test.ts
   test/                  setup.ts e factories.ts do Vitest
-tests/e2e/               specs Playwright (E2E-01…E2E-14, acessibilidade, aparência) + helpers.ts
+tests/e2e/               specs Playwright (E2E-01…E2E-14, acessibilidade, aparência, investimentos) + helpers.ts
 tests/fixtures/          planilhas .xlsx de teste (geradas por scripts/make-fixtures.mjs)
 public/                  favicon.svg (fonte dos ícones), PNGs do PWA, theme-init.js
 scripts/                 make-fixtures.mjs, make-icons.mjs
@@ -149,18 +157,20 @@ As dependências vão numa só direção: `domain` ← `data` ← `hooks` ← `f
 - **`hooks/`** juntam `useLiveQuery` e o domínio. As telas reagem sozinhas a qualquer gravação, sem um estado global de dados.
 - **`features/`** contém as telas, e **`ui/`** os componentes sem regra de negócio.
 
-**Modelo de dados** (`src/data/db.ts`, Dexie versão 1; qualquer mudança exige `version(n+1)` com `upgrade()`):
+**Modelo de dados** (`src/data/db.ts`, Dexie versão 2; mudar uma tabela existente exige `version(n+1)` com `upgrade()`):
 
 - `wallets`: `id, createdAt`.
 - `expenses`: `id, walletId, [walletId+month], [walletId+month+categoryId]`. O campo `month` (`YYYY-MM`) fica gravado para permitir consultas por índice.
 - `budgets`: `id, walletId, [walletId+categoryId]`. O limite vale a partir de um mês, e o mais recente que for menor ou igual ao mês consultado é o que vale.
 - `settings`: um registro só (`id: 'app'`), com carteira ativa, onboarding e persistência.
+- v2, investimentos: `investments` (`id, type, createdAt`), `investmentEntries` (`id, investmentId, date`; `kind` = aporte, resgate ou saldo) e `marketRefs` (`id: 'refs'`, CDI e IPCA de referência). O cálculo fica em `src/domain/investments.ts` (`valuationsAt`, `buildPortfolio`). No mesmo dia, as movimentações seguem a ordem de lançamento (`createdAt`); resgates reduzem o aplicado na proporção do valor resgatado.
 
-**Telas:** quatro abas, Resumo (`/`), Lançamentos (`/lancamentos`), Orçamento (`/orcamento`) e Mais (`/mais/*`).
+**Telas:** cinco abas, Resumo (`/`), Lançamentos (`/lancamentos`), Investimentos (`/investimentos`, `/investimentos/:id`), Orçamento (`/orcamento`) e Mais (`/mais/*`).
 
 - Resumo e Lançamentos vêm no pacote inicial; o resto é carregado com `lazy`.
 - O formulário de lançamento é uma sheet aberta por `ExpenseFormContext`.
 - Depois de salvar, `useSaveExpense` dispara o evento `gastos:expense-saved` (com categoria, valor e se o lançamento é novo). O botão Lançar e o `SaveCelebration` reagem a ele.
+- Na aba Investimentos, o botão Lançar dispara `gastos:investment-launch`: a aba abre o cadastro (se não houver ativos) ou o lançamento de movimentação.
 
 ## Convenções
 
@@ -222,6 +232,7 @@ As dependências vão numa só direção: `domain` ← `data` ← `hooks` ← `f
 - **Datas de criação empatadas:** registros criados no mesmo milissegundo empatam em `createdAt`. Testes não devem depender da ordem de `orderBy('createdAt')` nesses casos.
 - **Teclado do iOS:** o teclado não encolhe o layout, só a área visível. `ui/Sheet.tsx` acompanha `visualViewport` para a sheet ficar acima do teclado. Não volte a usar `dvh` ou `inset-0` puro na altura das sheets.
 - **Campo de data nativo:** o formato segue o idioma do navegador, não o app.
+- **Testes que dependem do dia:** os E2E usam a data de hoje. No dia 1º, "hoje" e "dia 01 do mês" coincidem; não dependa da ordem entre registros da mesma data.
 - **Teste de desempenho no E2E:** o E2E-03 (300 ms) pode falhar com a máquina carregada pela suíte inteira. Rode-o sozinho antes de concluir que houve regressão.
 
 ## Git

@@ -336,6 +336,28 @@ textarea {
   animation: celebrate-text 420ms 300ms var(--ease-out-expo) both;
 }
 
+/* Gráfico de patrimônio: as barras sobem da base, uma após a outra. */
+@keyframes bar-rise {
+  from {
+    transform: scaleY(0);
+  }
+}
+.bar-rise {
+  transform-origin: bottom;
+  animation: bar-rise 700ms calc(var(--i, 0) * 28ms) var(--ease-out-expo) both;
+}
+
+/* Rosca da distribuição: gira um pouco e assenta. */
+@keyframes donut-in {
+  from {
+    opacity: 0;
+    transform: rotate(-150deg) scale(0.9);
+  }
+}
+.donut-in {
+  animation: donut-in 800ms var(--ease-out-expo) both;
+}
+
 /* O título compacto da barra aparece quando o título grande sai da tela. */
 .compact-title {
   transition:

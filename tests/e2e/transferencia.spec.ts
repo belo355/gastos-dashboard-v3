@@ -86,9 +86,13 @@ test('E2E-08 — Exportar meses', async ({ page }) => {
   expect(now.cents).toBe(21027);
   expect(totalNow).toBe('R$ 210,27');
   expect(before.cents).toBe(6000);
-  // Linhas em ordem crescente de data, com categoria pelo nome.
-  expect(now.rows.map((r) => r[2])).toEqual(['Alimentação', 'Mercado']);
+  // Linhas em ordem crescente de data, com categoria pelo nome. No dia 1º as duas datas
+  // coincidem e a ordem entre elas é livre, então a checagem é pela data, não pela posição.
   expect(now.rows[0]![0]).toBeInstanceOf(Date);
+  const times = now.rows.map((r) => (r[0] as unknown as Date).getTime());
+  expect(times).toEqual([...times].sort((a, b) => a - b));
+  expect(now.rows.map((r) => r[2]).sort()).toEqual(['Alimentação', 'Mercado']);
+  if (iso !== `${month}-01`) expect(now.rows.map((r) => r[2])).toEqual(['Alimentação', 'Mercado']);
 });
 
 test('E2E-09 — Importar com prévia e conflito', async ({ page }) => {

@@ -149,7 +149,10 @@ export function addMonths(month: string, delta: number): string {
 }
 
 /** Abre a aba pela navegação inferior. */
-export async function goTab(page: Page, name: 'Resumo' | 'Lançamentos' | 'Orçamento' | 'Mais') {
+export async function goTab(
+  page: Page,
+  name: 'Resumo' | 'Lançamentos' | 'Investimentos' | 'Orçamento' | 'Mais',
+) {
   await page
     .getByRole('navigation', { name: 'Navegação principal' })
     .getByRole('link', { name })
