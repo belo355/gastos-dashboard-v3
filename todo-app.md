@@ -33,6 +33,7 @@ Sugestões do revisor da skill impeccable, ainda não aplicadas:
 - [ ] **Busca na lista de lançamentos** por descrição, dentro do mês.
 - [ ] **Seletor de data próprio em pt-BR.** O campo nativo mostra o formato do navegador (ex.: `10/26/2026` com o navegador em inglês). Atalhos "Hoje / Ontem" no formulário resolveriam a maioria dos casos sem abrir o calendário.
 - [x] **Animação ao lançar um gasto novo** (`src/features/app/SaveCelebration.tsx`): cartão no centro com o ícone da categoria, onda, pontos na cor dela, check desenhado e o valor; some em 1,5 s.
+- [x] **Escolha do tema** em Mais → Aparência (Automático, Claro, Escuro), salva no aparelho e aplicada antes da primeira pintura (`public/theme-init.js`).
 - [ ] **Vibração leve ao salvar** (`navigator.vibrate`, só no Android; o iOS ignora). Reforça a recompensa do RF5.
 
 ## 4. Produto (fora do MVP pelo PRD)

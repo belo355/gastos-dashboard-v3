@@ -10,6 +10,7 @@ import {
   Upload,
   WalletMinimal,
 } from 'lucide-react';
+import { AppearanceSection } from './AppearanceSection';
 import { TileIcon } from '../../ui/CategoryIcon';
 import { GroupedList } from '../../ui/Grouped';
 import { PageHeader } from '../../ui/PageHeader';
@@ -90,6 +91,7 @@ function MoreMenu() {
       <PageHeader id="mais-title" title="Mais" />
       <ExportReminder />
       <div className="flex flex-col gap-6 pt-2">
+        <AppearanceSection />
         {SECTIONS.map((items) => (
           <GroupedList key={items[0]!.to}>
             {items.map((i) => (

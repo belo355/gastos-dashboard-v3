@@ -15,8 +15,24 @@ function block(source: string): Record<string, string> {
 }
 
 const darkStart = css.indexOf('@media (prefers-color-scheme: dark)');
+const forcedStart = css.indexOf(":root[data-theme='dark']");
 const light = block(css.slice(0, darkStart));
-const dark = block(css.slice(darkStart));
+const dark = block(css.slice(darkStart, forcedStart));
+
+/** Todas as variáveis do trecho, com qualquer valor (inclui as rgb() translúcidas). */
+function allVars(source: string): Record<string, string> {
+  return Object.fromEntries(
+    [...source.matchAll(/--([\w-]+):\s*([^;]+);/g)].map((m) => [m[1]!, m[2]!.trim()]),
+  );
+}
+
+describe('tema escuro escolhido em Mais → Aparência', () => {
+  it('usa exatamente as cores do escuro do sistema', () => {
+    const system = allVars(css.slice(darkStart, forcedStart));
+    expect(Object.keys(system).length).toBeGreaterThan(20);
+    expect(allVars(css.slice(forcedStart))).toEqual(system);
+  });
+});
 
 function luminance(hex: string): number {
   const ch = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);

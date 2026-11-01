@@ -91,9 +91,6 @@ textarea {
   scrollbar-color: var(--border) transparent;
   scrollbar-width: thin;
 }
-input[type='date'] {
-  color-scheme: light dark;
-}
 
 :focus-visible {
   outline: 3px solid var(--focus);
