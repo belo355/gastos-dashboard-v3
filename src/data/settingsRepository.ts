@@ -1,6 +1,6 @@
 import type { Settings, Wallet } from '../domain/types';
 import { newId, nowIso } from '../lib/id';
-import { db } from './db';
+import { ALL_TABLES, db } from './db';
 import { guard } from './storageGuard';
 import { DEFAULT_WALLET_NAME } from './walletRepository';
 
@@ -56,16 +56,11 @@ export const settingsRepository = {
     return this.update({ activeWalletId: walletId });
   },
 
-  /** Apaga tudo do aparelho (carteiras, lançamentos, orçamentos e preferências). */
+  /** Apaga tudo do aparelho (carteiras, lançamentos, orçamentos, investimentos e preferências). */
   wipeAll(): Promise<void> {
     return guard('settings.wipe', () =>
-      db.transaction('rw', db.wallets, db.expenses, db.budgets, db.settings, async () => {
-        await Promise.all([
-          db.wallets.clear(),
-          db.expenses.clear(),
-          db.budgets.clear(),
-          db.settings.clear(),
-        ]);
+      db.transaction('rw', ALL_TABLES(), async () => {
+        await Promise.all(ALL_TABLES().map((t) => t.clear()));
       }),
     );
   },

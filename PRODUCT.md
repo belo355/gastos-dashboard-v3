@@ -37,11 +37,12 @@ Lançamento rápido e privacidade total são requisitos, não o diferencial.
 ## Capabilities and Constraints
 
 - Requisitos completos em `tasks/prd-controle-gastos-diarios/prd.md`; arquitetura em `tasks/prd-controle-gastos-diarios/techspec.md`.
-- Só despesas (sem receitas ou saldo). 12 categorias fixas: Alimentação, Mercado, Moradia, Transporte, Carro, Saúde, Educação, Lazer, Jogos, Vestuário, Família, Outros, cada uma com cor e ícone próprios.
+- Gastos: só despesas (sem receitas ou saldo). 12 categorias fixas: Alimentação, Mercado, Moradia, Transporte, Carro, Saúde, Educação, Lazer, Jogos, Vestuário, Família, Outros, cada uma com cor e ícone próprios.
 - 100% local: sem conta, sem servidor, nenhum dado financeiro sai do aparelho (CSP `connect-src 'self'`). CSP estrita sem `'unsafe-inline'`.
 - Pacote inicial enxuto: telas secundárias e bibliotecas de planilha e animação carregadas sob demanda.
 - Apenas pt-BR e BRL; moeda `R$ 1.234,56`, datas `dd/mm/aaaa`, meses por extenso ("Outubro 2026"). Tom simples e próximo, sem jargão financeiro.
-- Tema claro e escuro seguindo o sistema.
+- Investimentos (aba própria, separada das carteiras): ativos, aportes, resgates e saldos informados; patrimônio dividido mês a mês entre valor aplicado e ganho de capital; projeção por taxa (% do CDI, prefixado, IPCA +) com taxas de referência informadas pelo usuário, sem cotações online.
+- Tema claro e escuro seguindo o sistema, ou fixo em Mais → Aparência.
 - Fora do escopo: login e nuvem, categorias personalizadas, recorrentes, streaks e conquistas, insights automáticos, notificações push, integrações bancárias, outros formatos de arquivo, apps nativos.
 - **Em aberto:** o nome "Gastos do Dia" é provisório.
 

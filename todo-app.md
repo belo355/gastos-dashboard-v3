@@ -33,9 +33,18 @@ Sugestões do revisor da skill impeccable, ainda não aplicadas:
 - [ ] **Busca na lista de lançamentos** por descrição, dentro do mês.
 - [ ] **Seletor de data próprio em pt-BR.** O campo nativo mostra o formato do navegador (ex.: `10/26/2026` com o navegador em inglês). Atalhos "Hoje / Ontem" no formulário resolveriam a maioria dos casos sem abrir o calendário.
 - [x] **Animação ao lançar um gasto novo** (`src/features/app/SaveCelebration.tsx`): cartão no centro com o ícone da categoria, onda, pontos na cor dela, check desenhado e o valor; some em 1,5 s.
+- [x] **Escolha do tema** em Mais → Aparência (Automático, Claro, Escuro), salva no aparelho e aplicada antes da primeira pintura (`public/theme-init.js`).
 - [ ] **Vibração leve ao salvar** (`navigator.vibrate`, só no Android; o iOS ignora). Reforça a recompensa do RF5.
 
-## 4. Produto (fora do MVP pelo PRD)
+## 4. Investimentos
+
+- [x] **Aba Investimentos**: cadastro de ativos (novos e existentes), aportes, resgates, saldos informados, patrimônio aplicado × ganho mês a mês, distribuição por tipo, ativos, extrato e detalhe.
+- [ ] Proventos/dividendos (o guia mostra "Proventos recebidos").
+- [ ] Exportar e importar investimentos em `.xlsx` (hoje só os gastos).
+- [ ] Rentabilidade dos últimos 12 meses com minigráfico, como no guia.
+- [ ] Escrever o PRD/TechSpec da feature (`/criar-prd`), como as demais.
+
+## 5. Produto (fora do MVP pelo PRD)
 
 Listadas no PRD como evoluções futuras. Cada uma pede PRD e TechSpec próprios (`/criar-prd`):
 
@@ -47,7 +56,7 @@ Listadas no PRD como evoluções futuras. Cada uma pede PRD e TechSpec próprios
 - [ ] Insights automáticos além da comparação com o mês anterior.
 - [ ] Backup opcional em nuvem (exigiria rever a CSP e a política de privacidade).
 
-## 5. Projeto e manutenção
+## 6. Projeto e manutenção
 
 - [ ] **README.** Não há README na raiz. Um resumo curto com o que é o app, como rodar e capturas de tela ajuda o objetivo de portfólio.
 - [ ] **Abrir PR de `develop` para `master`** com o redesign, quando os itens da seção 1 estiverem resolvidos.

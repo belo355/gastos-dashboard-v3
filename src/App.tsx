@@ -19,6 +19,11 @@ const BudgetPage = lazy(() =>
 const MorePage = lazy(() =>
   import('./features/settings/MorePage').then((m) => ({ default: m.MorePage })),
 );
+const InvestmentsPage = lazy(() =>
+  import('./features/investments/InvestmentsPage').then((m) => ({
+    default: m.InvestmentsPage,
+  })),
+);
 const Welcome = lazy(() =>
   import('./features/onboarding/Welcome').then((m) => ({ default: m.Welcome })),
 );
@@ -77,6 +82,14 @@ export function AppRoutes() {
           element={
             <Suspense fallback={<Loading />}>
               <BudgetPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="investimentos/*"
+          element={
+            <Suspense fallback={<Loading />}>
+              <InvestmentsPage />
             </Suspense>
           }
         />

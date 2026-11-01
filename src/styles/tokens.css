@@ -1,6 +1,8 @@
 /*
  * Tokens de design — paleta inspirada no iOS (fundo agrupado, células brancas, azul do sistema).
- * Tema claro por padrão; o escuro segue a preferência do sistema.
+ * Tema claro por padrão; o escuro segue o sistema, a menos que o usuário fixe um tema em
+ * Mais → Aparência (data-theme no <html>). O bloco escuro aparece duas vezes (sistema e fixo):
+ * contrast.test.ts confere que são iguais.
  * As cores de categoria seguem as cores do sistema da Apple: no claro, as variantes de
  * "Aumentar contraste" (texto branco por cima); no escuro, as cores escuras do sistema (texto preto).
  *   --cat-<id>  preenchimento (gráficos, ícones)
@@ -49,8 +51,12 @@
   --cat-ink: #ffffff;
 }
 
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --bg: #000000;
     --surface: #1c1c1e;
     --surface-2: #2c2c2e;
@@ -88,4 +94,45 @@
     --cat-outros: #98989d;
     --cat-ink: #000000;
   }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #000000;
+  --surface: #1c1c1e;
+  --surface-2: #2c2c2e;
+  --border: #48484a;
+  --separator: #38383a;
+  --text: #f5f5f7;
+  --text-muted: #98989f;
+  --primary: #0071e3;
+  --primary-ink: #ffffff;
+  --tint: #409cff;
+  --tint-fill: #0d2a4d;
+  --focus: #409cff;
+  --material: rgb(22 22 24 / 0.9);
+  --surface-bar: #161618;
+  --scrim: rgb(0 0 0 / 0.56);
+
+  --ok: #30d158;
+  --warning: #ffd60a;
+  --danger: #ff6961;
+  --ok-bg: #0f2a17;
+  --warning-bg: #2e2604;
+  --danger-bg: #3a1214;
+
+  --cat-alimentacao: #ff9f0a;
+  --cat-mercado: #30d158;
+  --cat-moradia: #0a84ff;
+  --cat-transporte: #64d2ff;
+  --cat-carro: #ff453a;
+  --cat-saude: #ff375f;
+  --cat-educacao: #7d7aff;
+  --cat-lazer: #ffd60a;
+  --cat-jogos: #bf5af2;
+  --cat-vestuario: #ac8e68;
+  --cat-familia: #63e6e2;
+  --cat-outros: #98989d;
+  --cat-ink: #000000;
 }

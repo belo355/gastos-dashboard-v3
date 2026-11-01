@@ -16,7 +16,7 @@ const DECIMAL = new Intl.NumberFormat('pt-BR', {
  * Aceita "25,90", "1.234,56", "R$ 5", "12.5"; devolve null para vazio, zero,
  * negativo, ilegível ou acima do máximo.
  */
-export function parseMoney(text: string): number | null {
+export function parseMoney(text: string, max: number = MAX_AMOUNT_CENTS): number | null {
   let s = text.replace(/R\$/gi, '').replace(WHITESPACE, '');
   if (s === '' || s.startsWith('-')) return null;
 
@@ -42,7 +42,7 @@ export function parseMoney(text: string): number | null {
   if (!/^\d*$/.test(fracPart) || fracPart.length > 2) return null;
   if (intPart === '') intPart = '0';
   const cents = Number(intPart) * 100 + Number(fracPart.padEnd(2, '0'));
-  if (!Number.isSafeInteger(cents) || cents <= 0 || cents > MAX_AMOUNT_CENTS) return null;
+  if (!Number.isSafeInteger(cents) || cents <= 0 || cents > max) return null;
   return cents;
 }
 
